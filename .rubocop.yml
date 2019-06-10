@@ -1,0 +1,26 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/IndentFirstArgument:
+  EnforcedStyle: consistent
+
+Metrics/LineLength:
+  Max: 90
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false

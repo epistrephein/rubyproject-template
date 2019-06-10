@@ -1,0 +1,53 @@
+*.gem
+*.rbc
+/.config
+/coverage
+/InstalledFiles
+/pkg
+/test/tmp
+/test/version_tmp
+/tmp
+
+# Version specifiers
+# Gemfile.lock
+# gems.locked
+# .ruby-version
+# .ruby-gemset
+
+# Environment normalization
+/.bundle
+/lib/bundler/man
+
+# RSpec
+.rspec_status
+/spec/reports
+/spec/examples.txt
+
+# Documentation cache
+/.yardoc
+/_yardoc
+/doc
+/rdoc
+
+# Logs
+*.log
+*.log.[0-9]*
+
+# Databases
+*.sqlite
+*.db
+
+# Foreman/Dotenv
+Procfile.*
+.env*
+
+# Pry
+.pryrc
+.pry_history
+
+# RVM
+.rvmrc
+
+# Project specific
+/config/config.yml
+/config/schedule.rb

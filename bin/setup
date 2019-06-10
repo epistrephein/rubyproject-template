@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+set -vx
+
+# Install gem dependecies
+bundle install --with development
+
+# Duplicate example config and schedule files
+CONFIG_DIR="$(dirname "${BASH_SOURCE[0]}")/../config"
+
+cp -nv "$CONFIG_DIR/config.example.yml" "$CONFIG_DIR/config.yml"
+cp -nv "$CONFIG_DIR/schedule.example.rb" "$CONFIG_DIR/schedule.rb"
