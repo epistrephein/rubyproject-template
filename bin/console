@@ -6,8 +6,12 @@ require 'bundler/setup'
 # Launch pry or irb
 begin
   require 'pry'
+  require 'rainbow'
+  require 'ap'
+
   Pry.start
 rescue LoadError
   require 'irb'
+
   IRB.start(__FILE__)
 end

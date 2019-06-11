@@ -5,7 +5,7 @@ IFS=$'\n\t'
 set -vx
 
 # Install gem dependecies
-bundle install --with development
+bundle install
 
 # Duplicate example config and schedule files
 CONFIG_DIR="$(dirname "${BASH_SOURCE[0]}")/../config"
