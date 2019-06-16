@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'whenever', '~> 0.10', require: false
+gem 'whenever', '~> 1.0', require: false
 
 group :development, optional: true do
   gem 'awesome_print'
