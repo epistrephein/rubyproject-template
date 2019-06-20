@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'sequel',   '~> 5.20'
 gem 'whenever', '~> 1.0', require: false
 
 group :development, optional: true do

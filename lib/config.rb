@@ -2,11 +2,11 @@
 
 require 'yaml'
 
-# Load configuration file
+# Load the configuration file
 @config_file = File.join(__dir__, '..', 'config', 'config.yml')
 @config      = YAML.load_file(@config_file)
 
-# Validate configuration keys
+# Validate the configuration keys
 keys = %w[key1 key2 key3]
 
 unless (missing = keys - @config.keys) && missing.empty?

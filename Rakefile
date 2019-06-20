@@ -16,6 +16,7 @@ namespace :template do
     [
       ROOT_DIR.join('config', 'schedule.example.rb'),
       ROOT_DIR.join('config', 'config.example.yml'),
+      ROOT_DIR.join('lib', 'database.rb'),
       ROOT_DIR.join('.ruby-gemset')
     ].each do |file|
       next unless file.exist?
