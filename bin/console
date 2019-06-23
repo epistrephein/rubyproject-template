@@ -3,7 +3,7 @@
 
 require 'bundler/setup'
 
-# Launch pry or irb
+# Launch Pry or IRB
 begin
   require 'pry'
   require 'rainbow'

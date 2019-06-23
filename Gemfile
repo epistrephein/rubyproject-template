@@ -6,7 +6,7 @@ gem 'mysql2',   '~> 0.5'
 gem 'sequel',   '~> 5.20'
 gem 'whenever', '~> 1.0', require: false
 
-group :development, optional: true do
+group :development do
   gem 'awesome_print'
   gem 'pry'
   gem 'rainbow'
