@@ -8,7 +8,7 @@ gem 'whenever', '~> 1.0', require: false
 
 group :development do
   gem 'awesome_print'
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'rainbow'
   gem 'rubocop'
 end
