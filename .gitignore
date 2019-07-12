@@ -44,6 +44,7 @@ Procfile.*
 # Pry
 .pryrc
 .pry_history
+.byebug_history
 
 # RVM
 .rvmrc
