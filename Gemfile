@@ -2,9 +2,12 @@
 
 source 'https://rubygems.org'
 
-gem 'mysql2',   '~> 0.5'
-gem 'sequel',   '~> 5.20'
-gem 'whenever', '~> 1.0', require: false
+gem 'mysql2', '~> 0.5'
+gem 'sequel', '~> 5.20'
+
+group :production do
+  gem 'whenever', '~> 1.0', require: false
+end
 
 group :development do
   gem 'awesome_print'

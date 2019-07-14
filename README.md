@@ -4,8 +4,9 @@ A description of the project.
 
 ## Usage
 
-Run `bin/setup` to install all dependencies via Bundler and to duplicate the
+In production, run `bin/setup` to install all dependencies via Bundler and to duplicate the
 example configuration and schedule files.
+In development, run `bundle install --without production` instead.
 
 Customize `config/config.yml` with your credentials.
 
