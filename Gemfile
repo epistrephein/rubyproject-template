@@ -14,4 +14,6 @@ group :development do
   gem 'pry-byebug'
   gem 'rainbow'
   gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rspec'
 end

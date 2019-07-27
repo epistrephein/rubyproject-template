@@ -1,3 +1,7 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
 # Align the elements of a hash literal if they span more than one line.
 Layout/AlignHash:
   EnforcedHashRocketStyle: table
