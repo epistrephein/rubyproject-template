@@ -16,6 +16,7 @@
 
 # Environment normalization
 /.bundle
+/vendor/bundle
 /lib/bundler/man
 
 # RSpec
@@ -41,13 +42,16 @@
 Procfile.*
 .env*
 
-# Pry
+# Pry/Byebug
 .pryrc
 .pry_history
 .byebug_history
 
 # RVM
 .rvmrc
+
+# RuboCop
+.rubocop-https?--*
 
 # Project specific
 /config/config.yml
