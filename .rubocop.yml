@@ -3,142 +3,123 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.3
   DisplayCopNames: true
   DisplayStyleGuide: true
+  TargetRubyVersion: 2.5
 
 # Align the elements of a hash literal if they span more than one line.
 Layout/AlignHash:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_layout/#layoutalignhash
 
-# Checks the indentation of the first argument in a method call.
+# Check the indentation of the first argument in a method call.
 Layout/IndentFirstArgument:
   EnforcedStyle: consistent
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_layout/#layoutindentfirstargument
 
-# Checks the indentation of the first element in an array literal.
+# Check the indentation of the first element in an array literal.
 Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_layout/#layoutindentfirstarrayelement
 
-# Checks the indentation of the first key in a hash literal.
+# Check the indentation of the first key in a hash literal.
 Layout/IndentFirstHashElement:
   EnforcedStyle: consistent
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_layout/#layoutindentfirsthashelement
 
-# Checks for ambiguous regexp literals in the first argument of a method invocation without parentheses.
+# Check for ambiguous regexp literals in the first argument of a method invocation without parentheses.
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_lint/#lintambiguousregexpliteral
 
 # Check the naming of accessor methods for get_/set_.
 Naming/AccessorMethodName:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_naming/#namingaccessormethodname
 
 # Check the names of predicate methods.
 Naming/PredicateName:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_naming/#namingpredicatename
 
 # A calculated magnitude based on number of assignments, branches, and conditions.
 Metrics/AbcSize:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsabcsize
 
 # Avoid long blocks with many lines.
 Metrics/BlockLength:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsblocklength
 
 # Avoid excessive block nesting.
 Metrics/BlockNesting:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsblocknesting
 
 # Avoid classes longer than 100 lines of code.
 Metrics/ClassLength:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsclasslength
 
 # A complexity metric that is strongly correlated to the number of test cases needed to validate a method.
 Metrics/CyclomaticComplexity:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricscyclomaticcomplexity
 
 # Limit lines to 80 characters.
 Metrics/LineLength:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricslinelength
 
 # Avoid methods longer than 10 lines of code.
 Metrics/MethodLength:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsmethodlength
 
 # Avoid modules longer than 100 lines of code.
 Metrics/ModuleLength:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsmodulelength
 
 # Avoid parameter lists longer than three or four parameters.
 Metrics/ParameterLists:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsparameterlists
 
 # A complexity metric geared towards measuring complexity for a human reader.
 Metrics/PerceivedComplexity:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_metrics/#metricsperceivedcomplexity
 
 # Use only ascii symbols in comments.
 Style/AsciiComments:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#styleasciicomments
 
 # Enforce braces style around hash parameters.
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylebracesaroundhashparameters
 
 # Do not place comments on the same line as certain keywords.
 Style/CommentedKeyword:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylecommentedkeyword
 
 # Document classes and non-namespace modules.
 Style/Documentation:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#styledocumentation
+
+# Put empty method definitions on a single line.
+Style/EmptyMethod:
+  Enabled: false
 
 # Favor modifier if/unless usage when you have a single-line body.
 Style/IfUnlessModifier:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#styleifunlessmodifier
 
 # Add underscores to large numeric literals to improve their readability.
 Style/NumericLiterals:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylenumericliterals
 
-# Checks for the use of predicate- or comparison methods for numeric comparisons.
+# Check for the use of predicate or comparison methods for numeric comparisons.
 Style/NumericPredicate:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylenumericpredicate
 
-# Checks for unwanted commas and colons in %i/%I literals.
+# Enforce using // or %r around regular expressions.
+Style/RegexpLiteral:
+  Enabled: false
+
+# Check for unwanted commas and colons in %i/%I literals.
 Style/SymbolArray:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylesymbolarray
 
 # Favor modifier while/until usage when you have a single-line body.
 Style/WhileUntilModifier:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylewhileuntilmodifier
 
 # Use %w or %W for arrays of words.
 Style/WordArray:
   Enabled: false
-  StyleGuide: https://docs.rubocop.org/en/stable/cops_style/#stylewordarray
