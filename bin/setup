@@ -4,11 +4,14 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
-# Install gem dependecies
-bundle install --without development test
+# Install gem dependencies for development or production
+if   [ $# -eq 0 ];             then bundle install
+elif [ "$1" == "production" ]; then bundle install --without development test
+else >&2 echo "Unknown parameter: $1"; exit 1
+fi
 
 # Duplicate example config and schedule files
 CONFIG_DIR="$(dirname "${BASH_SOURCE[0]}")/../config"
 
-cp -nv "$CONFIG_DIR/config.example.yml" "$CONFIG_DIR/config.yml"
+cp -nv "$CONFIG_DIR/config.example.yml"  "$CONFIG_DIR/config.yml"
 cp -nv "$CONFIG_DIR/schedule.example.rb" "$CONFIG_DIR/schedule.rb"
