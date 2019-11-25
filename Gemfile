@@ -3,7 +3,8 @@
 source 'https://rubygems.org'
 
 gem 'mysql2', '~> 0.5'
-gem 'sequel', '~> 5.20'
+gem 'rake',   '>= 12.0'
+gem 'sequel', '~> 5.26'
 
 group :production do
   gem 'whenever', '~> 1.0', require: false
@@ -14,6 +15,4 @@ group :development do
   gem 'pry-byebug'
   gem 'rainbow'
   gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rspec'
 end
