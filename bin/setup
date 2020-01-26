@@ -4,11 +4,8 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
-# Install gem dependencies for development or production
-if   [ $# -eq 0 ];             then bundle install
-elif [ "$1" == "production" ]; then bundle install --without development test
-else >&2 echo "Unknown parameter: $1"; exit 1
-fi
+# Install gem dependencies
+bundle install "$@"
 
 # Duplicate example config and schedule files
 CONFIG_DIR="$(dirname "${BASH_SOURCE[0]}")/../config"
