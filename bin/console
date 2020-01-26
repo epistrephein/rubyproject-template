@@ -6,8 +6,8 @@ require 'bundler/setup'
 # Launch Pry or IRB
 begin
   require 'pry'
+  require 'awesome_print'
   require 'rainbow'
-  require 'ap'
 
   Pry.start
 rescue LoadError
