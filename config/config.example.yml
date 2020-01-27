@@ -4,3 +4,6 @@ mysql:
   username: 'username'
   password: 'password'
   database: 'rubyproject'
+telegram:
+  token: 000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  user:  000000000
