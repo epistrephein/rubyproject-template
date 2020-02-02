@@ -16,6 +16,7 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'dotenv'
   gem 'pry-byebug'
   gem 'rainbow'
   gem 'rubocop'

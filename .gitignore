@@ -43,6 +43,7 @@
 # Foreman/Dotenv
 Procfile.*
 .env*
+!.env-example
 
 # Pry/Byebug
 .pryrc
