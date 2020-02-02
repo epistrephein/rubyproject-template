@@ -3,6 +3,8 @@
 require 'bundler/setup'
 require 'pathname'
 
+Rake.add_rakelib 'tasks/**'
+
 ROOT_DIR = Pathname(__dir__)
 
 # Delete this namespace after successfully renaming the project
