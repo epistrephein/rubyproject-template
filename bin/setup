@@ -7,8 +7,9 @@ set -vx
 # Install gem dependencies
 bundle install "$@"
 
-# Duplicate example config and schedule files
-CONFIG_DIR="$(dirname "${BASH_SOURCE[0]}")/../config"
+# Duplicate example config, schedule and env files
+ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 
-cp -nv "$CONFIG_DIR/config.example.yml"  "$CONFIG_DIR/config.yml"
-cp -nv "$CONFIG_DIR/schedule.example.rb" "$CONFIG_DIR/schedule.rb"
+cp -nv "$ROOT_DIR/.env-example"               "$ROOT_DIR/.env"
+cp -nv "$ROOT_DIR/config/config.example.yml"  "$ROOT_DIR/config/config.yml"
+cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
