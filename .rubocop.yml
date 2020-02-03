@@ -1,35 +1,31 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.5
-
-# Align the elements of a hash literal if they span more than one line.
-Layout/AlignHash:
-  EnforcedHashRocketStyle: table
-  EnforcedColonStyle: table
+  TargetRubyVersion: 2.6
 
 # Check the indentation of the first argument in a method call.
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   EnforcedStyle: consistent
 
 # Check the indentation of the first element in an array literal.
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
 # Check the indentation of the first key in a hash literal.
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
+
+# Align the elements of a hash literal if they span more than one line.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+# Limit lines to 80 characters.
+Layout/LineLength:
+  Enabled: false
 
 # Check for ambiguous regexp literals in the first argument of a method invocation without parentheses.
 Lint/AmbiguousRegexpLiteral:
-  Enabled: false
-
-# Check the naming of accessor methods for get_/set_.
-Naming/AccessorMethodName:
-  Enabled: false
-
-# Check the names of predicate methods.
-Naming/PredicateName:
   Enabled: false
 
 # A calculated magnitude based on number of assignments, branches, and conditions.
@@ -52,10 +48,6 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-# Limit lines to 80 characters.
-Metrics/LineLength:
-  Enabled: false
-
 # Avoid methods longer than 10 lines of code.
 Metrics/MethodLength:
   Enabled: false
@@ -72,7 +64,7 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-# Use only ascii symbols in comments.
+# Use only ASCII symbols in comments.
 Style/AsciiComments:
   Enabled: false
 
@@ -104,11 +96,11 @@ Style/NumericLiterals:
 Style/NumericPredicate:
   Enabled: false
 
-# Enforce using // or %r around regular expressions.
+# Enforce using / or %r around regular expressions.
 Style/RegexpLiteral:
   Enabled: false
 
-# Check for unwanted commas and colons in %i/%I literals.
+# Use %i for arrays of symbols.
 Style/SymbolArray:
   Enabled: false
 
