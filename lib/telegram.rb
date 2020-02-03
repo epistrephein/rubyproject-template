@@ -5,7 +5,7 @@ begin
   require 'telegram/bot'
   require 'time'
 
-  APP_NAME       = File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
+  APP_NAME       = ENV['APP_NAME']       || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
   TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
   TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
 
@@ -21,9 +21,9 @@ begin
     TXT
 
     bot.api.send_message(
-      chat_id: TELEGRAM_USER,
+      chat_id:    TELEGRAM_USER,
       parse_mode: 'markdown',
-      text: text
+      text:       text
     )
   end
 rescue LoadError

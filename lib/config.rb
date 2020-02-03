@@ -2,13 +2,14 @@
 
 require 'yaml'
 
+CONFIG_FILE = File.join(__dir__, '..', 'config', 'config.yml')
+
 # Load the configuration file
-@config_file = File.join(__dir__, '..', 'config', 'config.yml')
-@config      = YAML.load_file(@config_file)
+@config = YAML.load_file(ENV['CONFIG_FILE'] || CONFIG_FILE)
 
 # Validate the configuration keys
-keys = %w[key1 key2 key3]
+required_keys = %w[database telegram]
 
-unless (missing = keys - @config.keys) && missing.empty?
+unless (missing = required_keys - @config.keys) && missing.empty?
   raise "Invalid config file, missing keys: #{missing.join(', ')}"
 end
