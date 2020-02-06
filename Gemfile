@@ -6,6 +6,10 @@ gem 'mysql2', '~> 0.5'
 gem 'rake',   '>= 12.0'
 gem 'sequel', '~> 5.26'
 
+group :aws, optional: true do
+  gem 'aws-sdk-s3', '~> 1.60'
+end
+
 group :notifications, optional: true do
   gem 'telegram-bot-ruby', '~> 0.12'
 end

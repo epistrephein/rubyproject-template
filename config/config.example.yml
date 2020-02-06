@@ -8,3 +8,9 @@ database:
 telegram:
   token: 000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   user:  000000000
+aws:
+  access_key_id: AAAAAAAAAAAAAAAAAAAA
+  secret_access_key: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+  region: eu-west-1
+  bucket: mybucket
+  prefix: subfolder/
