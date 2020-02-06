@@ -2,6 +2,10 @@
 
 require 'sequel'
 
+# Set database timezones
+Sequel.database_timezone    = :utc
+Sequel.application_timezone = :local
+
 # Connect to the database
 DB = Sequel.connect(
   adapter:  ENV['DB_ADAPTER']  || @config.dig('database', 'adapter')  || :mysql2,
