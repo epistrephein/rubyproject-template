@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-job_type :ruby, 'cd :path && :bundle_command exec ruby :task :output'
+job_type :ruby, 'cd :path && :bundle_command ruby :task :output'
 
-set :bundle_command, '/usr/local/bin/bundle'
+set :bundle_command, '/usr/local/bin/bundle exec'
 set :chronic_options, hours24: true
 set :output, error: 'log/stderr.log'
 
