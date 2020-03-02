@@ -3,9 +3,10 @@
 require 'bundler/setup'
 require 'pathname'
 
-Rake.add_rakelib 'tasks/**'
-
 ROOT_DIR = Pathname(__dir__)
+
+require_relative ROOT_DIR.join('lib', 'config')
+Rake.add_rakelib 'tasks/**'
 
 # Delete this namespace after successfully renaming the project
 namespace :template do
@@ -19,6 +20,7 @@ namespace :template do
       ROOT_DIR.join('config', 'schedule.example.rb'),
       ROOT_DIR.join('config', 'config.example.yml'),
       ROOT_DIR.join('lib', 'database.rb'),
+      ROOT_DIR.join('tasks', 'db.rake'),
       ROOT_DIR.join('.ruby-gemset')
     ].each do |file|
       next unless file.exist?

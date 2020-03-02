@@ -7,6 +7,7 @@ Sequel.database_timezone    = :utc
 Sequel.application_timezone = :local
 
 # Connect to the database
+# MySQL
 DB = Sequel.connect(
   adapter:  ENV['DB_ADAPTER']  || @config.dig('database', 'adapter')  || :mysql2,
   host:     ENV['DB_HOST']     || @config.dig('database', 'host')     || '127.0.0.1',
@@ -16,3 +17,7 @@ DB = Sequel.connect(
   database: ENV['DB_NAME']     || @config.dig('database', 'database') || 'rubyproject',
   logger:   @db_log
 )
+
+# SQLite
+# DB_FILE = ENV['DB_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
+# DB      = Sequel.sqlite(DB_PATH)
