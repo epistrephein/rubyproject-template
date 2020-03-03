@@ -1,7 +1,7 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.3
 
 # Check the indentation of the first argument in a method call.
 Layout/FirstArgumentIndentation:
@@ -22,6 +22,10 @@ Layout/HashAlignment:
 
 # Limit lines to 80 characters.
 Layout/LineLength:
+  Enabled: false
+
+# Enforce the indentation of the method name part in method calls that span more than one line.
+Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 # Check for ambiguous regexp literals in the first argument of a method invocation without parentheses.
@@ -68,10 +72,6 @@ Metrics/PerceivedComplexity:
 Style/AsciiComments:
   Enabled: false
 
-# Enforce braces style around hash parameters.
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-
 # Do not place comments on the same line as certain keywords.
 Style/CommentedKeyword:
   Enabled: false
@@ -82,6 +82,18 @@ Style/Documentation:
 
 # Put empty method definitions on a single line.
 Style/EmptyMethod:
+  Enabled: false
+
+# Enforce each_key and each_value Hash methods.
+Style/HashEachMethods:
+  Enabled: true
+
+# Enforce the use of transform_keys Hash method.
+Style/HashTransformKeys:
+  Enabled: false
+
+# Enforce the use of transform_values Hash method.
+Style/HashTransformValues:
   Enabled: false
 
 # Favor modifier if/unless usage when you have a single-line body.
