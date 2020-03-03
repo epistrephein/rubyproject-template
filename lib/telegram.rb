@@ -14,7 +14,7 @@ begin
 
     bot  = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
     text = <<~TXT
-      🚧 The application *#{APP_NAME}* has raised an exception. 🚧
+      🚧 Exception on *#{APP_NAME}* 🚧
 
       `#{Time.now.iso8601}`
       `#{message}`

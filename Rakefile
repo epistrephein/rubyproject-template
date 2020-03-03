@@ -18,7 +18,9 @@ namespace :template do
     ROOT_DIR.join('rubyproject.rb').rename("#{project}.rb")
     [
       ROOT_DIR.join('config', 'schedule.example.rb'),
+      ROOT_DIR.join('config', 'schedule.rb'),
       ROOT_DIR.join('config', 'config.example.yml'),
+      ROOT_DIR.join('config', 'config.yml'),
       ROOT_DIR.join('lib', 'database.rb'),
       ROOT_DIR.join('tasks', 'db.rake'),
       ROOT_DIR.join('.ruby-gemset')

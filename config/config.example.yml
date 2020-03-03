@@ -13,4 +13,4 @@ aws:
   secret_access_key: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
   region: eu-west-1
   bucket: mybucket
-  prefix: subfolder/
+  prefix: subfolder/rubyproject/

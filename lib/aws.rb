@@ -10,13 +10,13 @@ begin
   AWS_PREFIX            = ENV['AWS_PREFIX']            || @config.dig('aws', 'prefix')
 
   AWS_CREDENTIALS = Aws::Credentials.new(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
-  S3              = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
+  S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
-  def upload(file)
+  def s3_upload(file)
     basename = File.basename(file)
     content  = File.read(file)
 
-    S3.put_object(
+    S3_CLIENT.put_object(
       bucket: AWS_BUCKET,
       key:    "#{AWS_PREFIX}#{basename}",
       body:   content

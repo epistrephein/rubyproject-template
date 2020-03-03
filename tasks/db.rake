@@ -2,6 +2,8 @@
 
 require 'fileutils'
 
+require_relative ROOT_DIR.join('lib', 'aws')
+
 namespace :db do
   DB_DIR   = ROOT_DIR.join('db')
   DUMP_DIR = DB_DIR.join('dump')
@@ -14,12 +16,12 @@ namespace :db do
   DB_NAME     = ENV['DB_NAME']     || @config.dig('database', 'database')
 
   # SQLite
-  # DB_FILE  = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
+  # DB_FILE = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
 
   desc 'Create database'
   task :create do
-    exec "mysql -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} -e" \
-         "\"CREATE DATABASE #{DB_NAME} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;\""
+    system "mysql -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} -e" \
+           "\"CREATE DATABASE #{DB_NAME} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;\""
   end
 
   desc 'Dump database'
@@ -29,12 +31,22 @@ namespace :db do
 
     Dir.mkdir(DUMP_DIR) unless Dir.exist?(DUMP_DIR)
 
-    puts "Dumping to: #{dump_file}"
-
     # MySQL
-    exec "mysqldump -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} #{DB_NAME} | gzip -c > #{dump_file}"
+    system "mysqldump -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} #{DB_NAME} | gzip -c > #{dump_file}"
 
     # SQLite
-    # exec "sqlite3 #{DB_FILE} .dump | gzip -c > #{dump_file}"
+    # system "sqlite3 #{DB_FILE} .dump | gzip -c > #{dump_file}"
+
+    puts "Dumping to: #{dump_file}"
+  end
+
+  desc 'Backup database to S3'
+  task :backup do
+    Rake::Task['db:dump'].invoke
+
+    dump_file = FileList.new("#{DUMP_DIR}/*.gz").last
+    s3_upload(dump_file)
+
+    puts 'Uploaded to S3'
   end
 end
