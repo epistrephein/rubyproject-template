@@ -18,12 +18,6 @@ namespace :db do
   # SQLite
   # DB_FILE = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
 
-  desc 'Create database'
-  task :create do
-    system "mysql -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} -e" \
-           "\"CREATE DATABASE #{DB_NAME} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;\""
-  end
-
   desc 'Dump database'
   task :dump do
     now       = Time.now.strftime('%Y%m%dT%H%M%S')
@@ -47,6 +41,6 @@ namespace :db do
     dump_file = FileList.new("#{DUMP_DIR}/*.gz").last
     s3_upload(dump_file)
 
-    puts 'Uploaded to S3'
+    puts "Uploading to S3: #{dump_file}"
   end
 end

@@ -14,7 +14,7 @@ Optionally, to receive notifications via Telegram bot on exceptions raised, inst
 with `bin/setup --with notifications` and add your Telegram user id and bot
 token to the `config/config.yml` file.
 
-To setup a cron script for regular checks use the installed `whenever` gem.  
+Use the installed `whenever` gem to schedule recurring jobs via cron.
 Customize the interval in `config/schedule.rb`, then run `whenever --update-crontab`.
 
 A development console is available using `bin/console`.
