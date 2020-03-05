@@ -7,11 +7,11 @@ gem 'rake',    '>= 12.0'
 gem 'sequel',  '~> 5.26'
 # gem 'sqlite3', '~> 1.4'
 
-group :aws, optional: true do
+group :aws do
   gem 'aws-sdk-s3', '~> 1.60'
 end
 
-group :notifications, optional: true do
+group :notifications do
   gem 'telegram-bot-ruby', '~> 0.12'
 end
 

@@ -20,8 +20,8 @@ namespace :db do
 
   desc 'Dump database'
   task :dump do
-    now       = Time.now.strftime('%Y%m%dT%H%M%S')
-    dump_file = DUMP_DIR.join("rubyproject-#{now}.dump.gz")
+    timestamp = Time.now.strftime('%Y%m%dT%H%M%S')
+    dump_file = DUMP_DIR.join("rubyproject-#{timestamp}.dump.gz")
 
     Dir.mkdir(DUMP_DIR) unless Dir.exist?(DUMP_DIR)
 

@@ -12,7 +12,7 @@ Rake.add_rakelib 'tasks/**'
 namespace :template do
   desc 'Rename the project'
   task :rename do
-    raise 'No project name specified' if ENV['PROJECT'].nil?
+    raise 'No project name specified, prepend PROJECT=newname' if ENV['PROJECT'].nil?
 
     project = ENV['PROJECT'].strip.gsub(/\.rb$/, '')
     ROOT_DIR.join('rubyproject.rb').rename("#{project}.rb")
@@ -22,8 +22,7 @@ namespace :template do
       ROOT_DIR.join('config', 'config.example.yml'),
       ROOT_DIR.join('config', 'config.yml'),
       ROOT_DIR.join('lib', 'database.rb'),
-      ROOT_DIR.join('tasks', 'db.rake'),
-      ROOT_DIR.join('.ruby-gemset')
+      ROOT_DIR.join('tasks', 'db.rake')
     ].each do |file|
       next unless file.exist?
 
