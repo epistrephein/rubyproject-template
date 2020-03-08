@@ -11,7 +11,7 @@ group :aws do
   gem 'aws-sdk-s3', '~> 1.60'
 end
 
-group :notifications do
+group :telegram do
   gem 'telegram-bot-ruby', '~> 0.12'
 end
 

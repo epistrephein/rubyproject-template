@@ -12,7 +12,7 @@ Rake.add_rakelib 'tasks/**'
 namespace :template do
   desc 'Rename the project'
   task :rename do
-    raise 'No project name specified, prepend PROJECT=newname' if ENV['PROJECT'].nil?
+    raise 'No project name specified, append PROJECT=newname' if ENV['PROJECT'].nil?
 
     project = ENV['PROJECT'].strip.gsub(/\.rb$/, '')
     ROOT_DIR.join('rubyproject.rb').rename("#{project}.rb")
