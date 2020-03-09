@@ -5,6 +5,8 @@ begin
   require 'telegram/bot'
   require 'time'
 
+  require_relative 'config'
+
   TELEGRAM_APP   = ENV['TELEGRAM_APP']   || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
   TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
   TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')

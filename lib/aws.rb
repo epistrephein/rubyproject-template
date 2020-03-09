@@ -3,6 +3,8 @@
 begin
   require 'aws-sdk-s3'
 
+  require_relative 'config'
+
   AWS_ACCESS_KEY_ID     = ENV['AWS_ACCESS_KEY_ID']     || @config.dig('aws', 'access_key_id')
   AWS_SECRET_ACCESS_KEY = ENV['AWS_SECRET_ACCESS_KEY'] || @config.dig('aws', 'secret_access_key')
   AWS_REGION            = ENV['AWS_REGION']            || @config.dig('aws', 'region')

@@ -2,6 +2,9 @@
 
 require 'sequel'
 
+require_relative 'config'
+require_relative 'logger'
+
 # Set database timezones
 Sequel.database_timezone    = :utc
 Sequel.application_timezone = :local
