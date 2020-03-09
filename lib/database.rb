@@ -8,8 +8,7 @@ Sequel.application_timezone = :local
 
 # Connect to the database
 # MySQL
-DB = Sequel.connect(
-  adapter:  ENV['DB_ADAPTER']  || @config.dig('database', 'adapter')  || :mysql2,
+DB = Sequel.mysql2(
   host:     ENV['DB_HOST']     || @config.dig('database', 'host')     || '127.0.0.1',
   port:     ENV['DB_PORT']     || @config.dig('database', 'port')     || 3306,
   username: ENV['DB_USERNAME'] || @config.dig('database', 'username') || 'root',
