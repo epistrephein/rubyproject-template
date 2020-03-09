@@ -9,11 +9,11 @@ namespace :db do
   DUMP_DIR = DB_DIR.join('dump')
 
   # MySQL
-  DB_HOST     = ENV['DB_HOST']     || @config.dig('database', 'host')
-  DB_PORT     = ENV['DB_PORT']     || @config.dig('database', 'port')
-  DB_USERNAME = ENV['DB_USERNAME'] || @config.dig('database', 'username')
-  DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('database', 'password')
-  DB_NAME     = ENV['DB_NAME']     || @config.dig('database', 'database')
+  DB_HOST     = ENV['DB_HOST']     || @config.dig('mysql', 'host')
+  DB_PORT     = ENV['DB_PORT']     || @config.dig('mysql', 'port')
+  DB_USERNAME = ENV['DB_USERNAME'] || @config.dig('mysql', 'username')
+  DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('mysql', 'password')
+  DB_NAME     = ENV['DB_NAME']     || @config.dig('mysql', 'database')
 
   # SQLite
   # DB_FILE = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
