@@ -46,7 +46,7 @@ A development console is available using `bin/console`.
 - `DB_LOG`: Database transactions log file
 
 #### Telegram
-- `APP_NAME`: Application name used in notification text
+- `TELEGRAM_APP`: Application name used in notification message
 - `TELEGRAM_TOKEN`: Bot token
 - `TELEGRAM_USER`: Recipient user ID
 

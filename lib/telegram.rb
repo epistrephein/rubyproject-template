@@ -5,7 +5,7 @@ begin
   require 'telegram/bot'
   require 'time'
 
-  APP_NAME       = ENV['APP_NAME']       || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
+  TELEGRAM_APP   = ENV['TELEGRAM_APP']   || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
   TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
   TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
 
@@ -14,7 +14,7 @@ begin
 
     bot  = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
     text = <<~TXT
-      🚧 Exception on *#{APP_NAME}* 🚧
+      🚧 Exception on *#{TELEGRAM_APP}* 🚧
 
       `#{Time.now.iso8601}`
       `#{message}`
