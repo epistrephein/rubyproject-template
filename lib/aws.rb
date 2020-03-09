@@ -12,7 +12,7 @@ begin
   AWS_CREDENTIALS = Aws::Credentials.new(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
   S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
-  def s3_upload(file)
+  def s3_put(file)
     basename = File.basename(file)
     content  = File.read(file)
 

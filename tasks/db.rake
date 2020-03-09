@@ -39,7 +39,7 @@ namespace :db do
     Rake::Task['db:dump'].invoke
 
     dump_file = FileList.new("#{DUMP_DIR}/*.gz").last
-    s3_upload(dump_file)
+    s3_put(dump_file)
 
     puts "Uploading to S3: #{dump_file}"
   end
