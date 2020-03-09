@@ -22,4 +22,4 @@ DB = Sequel.mysql2(
 
 # SQLite
 # DB_FILE = ENV['DB_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
-# DB      = Sequel.sqlite(DB_PATH)
+# DB      = Sequel.sqlite(DB_FILE, logger: @db_log)
