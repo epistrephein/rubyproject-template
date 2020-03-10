@@ -14,7 +14,15 @@ begin
   def telegram_notification(message)
     return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
 
-    bot  = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
+    bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
+    bot.api.send_message(
+      chat_id:    TELEGRAM_USER,
+      parse_mode: 'markdown',
+      text:       message
+    )
+  end
+
+  def telegram_exception(message)
     text = <<~TXT
       🚧 Exception on *#{TELEGRAM_APP}* 🚧
 
@@ -22,11 +30,7 @@ begin
       `#{message}`
     TXT
 
-    bot.api.send_message(
-      chat_id:    TELEGRAM_USER,
-      parse_mode: 'markdown',
-      text:       text
-    )
+    telegram_notification(text)
   end
 rescue LoadError
   nil
