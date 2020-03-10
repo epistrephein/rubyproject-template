@@ -22,9 +22,9 @@ begin
     )
   end
 
-  def telegram_exception(message)
+  def telegram_exception(message, app: TELEGRAM_APP)
     text = <<~TXT
-      🚧 Exception on *#{TELEGRAM_APP}* 🚧
+      🚧 *#{app}* exception 🚧
 
       `#{Time.now.iso8601}`
       `#{message}`
