@@ -22,12 +22,13 @@ begin
     )
   end
 
-  def telegram_exception(message, app: TELEGRAM_APP)
+  def telegram_exception(exception, app: TELEGRAM_APP)
     text = <<~TXT
       🚧 *#{app}* exception 🚧
 
       `#{Time.now.iso8601}`
-      `#{message}`
+      `#{exception.class}`
+      `#{exception.message}`
     TXT
 
     telegram_notification(text)
