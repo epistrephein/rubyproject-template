@@ -11,17 +11,6 @@ begin
   TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
   TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
 
-  def telegram_notification(message)
-    return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
-
-    bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
-    bot.api.send_message(
-      chat_id:    TELEGRAM_USER,
-      parse_mode: 'markdown',
-      text:       message
-    )
-  end
-
   def telegram_exception(exception, app: TELEGRAM_APP)
     text = <<~TXT
       🚧 *#{app}* exception 🚧
@@ -32,6 +21,21 @@ begin
     TXT
 
     telegram_notification(text)
+  end
+
+  def telegram_notification(message)
+    return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
+
+    tries ||= 3
+
+    bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
+    bot.api.send_message(
+      chat_id:    TELEGRAM_USER,
+      parse_mode: :markdown,
+      text:       message
+    )
+  rescue Telegram::Bot::Exceptions::Base
+    retry unless (tries -= 1).zero?
   end
 rescue LoadError
   nil
