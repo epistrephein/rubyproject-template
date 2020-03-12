@@ -2,6 +2,8 @@
 
 begin
   require 'aws-sdk-s3'
+  require 'base64'
+  require 'digest'
 
   require_relative 'config'
 
@@ -15,14 +17,21 @@ begin
   S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
   def s3_put(file)
+    tries ||= 3
+
     basename = File.basename(file)
     content  = File.read(file)
+    digest   = Digest::MD5.digest(content)
 
     S3_CLIENT.put_object(
-      bucket: AWS_BUCKET,
-      key:    "#{AWS_PREFIX}#{basename}",
-      body:   content
+      bucket:      AWS_BUCKET,
+      key:         "#{AWS_PREFIX}#{basename}",
+      body:        content,
+      content_md5: Base64.encode64(digest)
     )
+  rescue Aws::S3::Errors => e
+    retry unless (tries -= 1).zero?
+    raise e
   end
 rescue LoadError
   nil
