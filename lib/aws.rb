@@ -17,7 +17,7 @@ begin
   S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
   def s3_put(file)
-    tries ||= 3
+    retries ||= 3
 
     basename = File.basename(file)
     content  = File.read(file)
@@ -30,7 +30,7 @@ begin
       content_md5: Base64.encode64(digest)
     )
   rescue Aws::S3::Errors => e
-    retry unless (tries -= 1).zero?
+    retry unless (retries -= 1).zero?
     raise e
   end
 rescue LoadError

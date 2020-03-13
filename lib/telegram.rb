@@ -26,7 +26,7 @@ begin
   def telegram_notification(message)
     return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
 
-    tries ||= 3
+    retries ||= 3
 
     bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
     bot.api.send_message(
@@ -34,8 +34,9 @@ begin
       parse_mode: :markdown,
       text:       message
     )
-  rescue Telegram::Bot::Exceptions::Base
-    retry unless (tries -= 1).zero?
+  rescue Telegram::Bot::Exceptions::Base => e
+    retry unless (retries -= 1).zero?
+    raise e
   end
 rescue LoadError
   nil
