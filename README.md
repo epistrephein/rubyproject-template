@@ -5,7 +5,7 @@ A template repository for plain Ruby projects, with database and cron support.
 ## Usage
 
 Customize the required gems in `Gemfile` then run `bin/setup` to install all
-dependencies via Bundler and to duplicate the example configuration, schedule and
+dependencies via Bundler and duplicate the example configuration, schedule and
 env files.  
 In production, pass `--without development` as argument to `bin/setup` in order
 to skip development dependencies.
@@ -20,9 +20,10 @@ backup on AWS S3, pass `--without telegram` and/or `--without aws` as argument
 to `bin/setup`.
 
 Use the installed `whenever` gem to schedule recurring jobs via cron.  
-Customize the interval in `config/schedule.rb`, then run `whenever --update-crontab`.
+Customize the logic and the time interval in `config/schedule.rb`, then run
+`whenever --update-crontab`.
 
-A development console is available using `bin/console`.
+A development console is available via `bin/console`.
 
 ## Environmental variables
 
@@ -46,7 +47,7 @@ A development console is available using `bin/console`.
 - `DB_LOG`: Database transactions log file
 
 #### Telegram
-- `TELEGRAM_APP`: Application name used in notification message
+- `TELEGRAM_APP`: Application name used in exception message
 - `TELEGRAM_TOKEN`: Bot token
 - `TELEGRAM_USER`: Recipient user ID
 
