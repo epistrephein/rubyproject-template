@@ -3,7 +3,6 @@
 require 'bundler/setup'
 require 'pathname'
 
-ROOT_DIR = Pathname(__dir__)
+ROOT_DIR = Pathname(__dir__).expand_path
 
-require_relative ROOT_DIR.join('lib', 'config')
 Rake.add_rakelib 'tasks/**'
