@@ -20,6 +20,16 @@ DB = Sequel.mysql2(
   logger:   @db_log
 )
 
+# PostgreSQL
+# DB = Sequel.postgres(
+#   host:     ENV['DB_HOST']     || @config.dig('postgres', 'host')     || '127.0.0.1',
+#   port:     ENV['DB_PORT']     || @config.dig('postgres', 'port')     || 5432,
+#   username: ENV['DB_USERNAME'] || @config.dig('postgres', 'username') || 'root',
+#   password: ENV['DB_PASSWORD'] || @config.dig('postgres', 'password') || '',
+#   database: ENV['DB_NAME']     || @config.dig('postgres', 'database') || 'rubyproject',
+#   logger:   @db_log
+# )
+
 # SQLite
 # DB_FILE = ENV['DB_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
 # DB      = Sequel.sqlite(DB_FILE, logger: @db_log)

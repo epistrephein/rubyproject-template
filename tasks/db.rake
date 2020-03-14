@@ -16,6 +16,13 @@ namespace :db do
   DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('mysql', 'password')
   DB_NAME     = ENV['DB_NAME']     || @config.dig('mysql', 'database')
 
+  # PostgreSQL
+  # DB_HOST     = ENV['DB_HOST']     || @config.dig('postgres', 'host')
+  # DB_PORT     = ENV['DB_PORT']     || @config.dig('postgres', 'port')
+  # DB_USERNAME = ENV['DB_USERNAME'] || @config.dig('postgres', 'username')
+  # DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('postgres', 'password')
+  # DB_NAME     = ENV['DB_NAME']     || @config.dig('postgres', 'database')
+
   # SQLite
   # DB_FILE = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
 
@@ -29,6 +36,9 @@ namespace :db do
     # MySQL
     system "mysqldump -u#{DB_USERNAME} #{'-p' + DB_PASSWORD unless DB_PASSWORD.empty?} #{DB_NAME} | gzip -c > #{dump_file}"
 
+    # PostgreSQL
+    # system "#{'PGPASSWORD=' + DB_PASSWORD unless DB_PASSWORD.empty?} pg_dump -U #{DB_USERNAME} #{DB_NAME} | gzip -c > #{dump_file}"
+
     # SQLite
     # system "sqlite3 #{DB_FILE} .dump | gzip -c > #{dump_file}"
 
@@ -39,7 +49,7 @@ namespace :db do
   task :backup do
     Rake::Task['db:dump'].invoke
 
-    dump_file = FileList.new("#{DUMP_DIR}/*.gz").last
+    dump_file = FileList.new(DUMP_DIR.join('*.gz')).last
     s3_put(dump_file)
 
     puts "Uploading to S3: #{dump_file}"

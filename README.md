@@ -31,7 +31,7 @@ A development console is available via `bin/console`.
 - `CONFIG_FILE`: Path to YAML configuration file
 
 #### Database
-###### MySQL
+###### MySQL/PostgreSQL
 - `DB_HOST`: Database hostname or IP
 - `DB_PORT`: Database port
 - `DB_USERNAME`: Database username
