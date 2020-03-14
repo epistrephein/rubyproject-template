@@ -25,7 +25,7 @@ begin
 
     S3_CLIENT.put_object(
       bucket:      AWS_BUCKET,
-      key:         "#{AWS_PREFIX}#{basename}",
+      key:         File.join(AWS_PREFIX, basename),
       body:        content,
       content_md5: Base64.encode64(digest)
     )
