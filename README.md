@@ -1,6 +1,6 @@
 # Ruby Project
 
-A template repository for plain Ruby projects, with database and cron support.
+A template for plain Ruby projects with database, backups, cronjobs and telegram support.
 
 ## Usage
 
