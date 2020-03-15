@@ -5,8 +5,7 @@ A template for plain Ruby projects with database, backups, cronjobs and telegram
 ## Usage
 
 Customize the required gems in `Gemfile` then run `bin/setup` to install all
-dependencies via Bundler and duplicate the example configuration, schedule and
-env files.  
+dependencies via Bundler and duplicate the example configuration and schedule files.
 In production, pass `--without development` as argument to `bin/setup` in order
 to skip development dependencies.
 
@@ -26,6 +25,9 @@ Customize the logic and the time interval in `config/schedule.rb`, then run
 A development console is available via `bin/console`.
 
 ## Environmental variables
+
+Environmental variables have precedence over values defined in the configuration
+file and can be used to override them.
 
 #### Configuration
 - `CONFIG_FILE`: Path to YAML configuration file
