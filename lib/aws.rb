@@ -16,6 +16,7 @@ begin
   AWS_CREDENTIALS = Aws::Credentials.new(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
   S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
+  # Upload a file to a S3 bucket
   def s3_put(file)
     retries ||= 3
 

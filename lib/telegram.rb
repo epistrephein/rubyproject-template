@@ -11,6 +11,7 @@ begin
   TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
   TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
 
+  # Send an exception as message via Telegram
   def telegram_exception(exception, app: TELEGRAM_APP)
     text = <<~TXT
       🚧 *#{app}* exception 🚧
@@ -23,6 +24,7 @@ begin
     telegram_notification(text)
   end
 
+  # Send a message via Telegram
   def telegram_notification(message)
     return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
 
