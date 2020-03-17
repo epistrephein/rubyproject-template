@@ -1,45 +1,41 @@
 # frozen_string_literal: true
 
 # Optional notifications via Telegram
-begin
-  require 'telegram/bot'
-  require 'time'
+require 'telegram/bot'
+require 'time'
 
-  require_relative 'config'
+require_relative 'config'
 
-  TELEGRAM_APP   = ENV['TELEGRAM_APP']   || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
-  TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
-  TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
+TELEGRAM_APP   = ENV['TELEGRAM_APP']   || File.basename($PROGRAM_NAME, File.extname($PROGRAM_NAME))
+TELEGRAM_TOKEN = ENV['TELEGRAM_TOKEN'] || @config.dig('telegram', 'token')
+TELEGRAM_USER  = ENV['TELEGRAM_USER']  || @config.dig('telegram', 'user')
 
-  # Send an exception as message via Telegram
-  def telegram_exception(exception, app: TELEGRAM_APP)
-    text = <<~TXT
-      🚧 *#{app}* exception 🚧
+# Send an exception as message via Telegram
+def telegram_exception(exception, app: TELEGRAM_APP)
+  text = <<~TXT
+    🚧 *#{app}* exception 🚧
 
-      `#{Time.now.iso8601}`
-      `#{exception.class}`
-      `#{exception.message}`
-    TXT
+    `#{Time.now.iso8601}`
+    `#{exception.class}`
+    `#{exception.message}`
+  TXT
 
-    telegram_notification(text)
-  end
+  telegram_notification(text)
+end
 
-  # Send a message via Telegram
-  def telegram_notification(message)
-    return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
+# Send a message via Telegram
+def telegram_notification(message)
+  return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
 
-    retries ||= 3
+  retries ||= 3
 
-    bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
-    bot.api.send_message(
-      chat_id:    TELEGRAM_USER,
-      parse_mode: :markdown,
-      text:       message
-    )
-  rescue Telegram::Bot::Exceptions::Base => e
-    retry unless (retries -= 1).zero?
-    raise e
-  end
-rescue LoadError
-  nil
+  bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
+  bot.api.send_message(
+    chat_id:    TELEGRAM_USER,
+    parse_mode: :markdown,
+    text:       message
+  )
+rescue Telegram::Bot::Exceptions::Base => e
+  retry unless (retries -= 1).zero?
+  raise e
 end
