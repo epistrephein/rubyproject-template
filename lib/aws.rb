@@ -17,8 +17,6 @@ S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDE
 
 # Upload a file to a S3 bucket
 def s3_put(file)
-  retries ||= 3
-
   basename = File.basename(file)
   content  = File.read(file)
   digest   = Digest::MD5.digest(content)
@@ -30,6 +28,8 @@ def s3_put(file)
     content_md5: Base64.encode64(digest)
   )
 rescue Aws::S3::Errors => e
-  retry unless (retries -= 1).zero?
+  retries ||= 3
+  retry if (retries -= 1).positive?
+
   raise e
 end

@@ -25,10 +25,6 @@ end
 
 # Send a message via Telegram
 def telegram_notification(message)
-  return if TELEGRAM_TOKEN.nil? || TELEGRAM_USER.nil?
-
-  retries ||= 3
-
   bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
   bot.api.send_message(
     chat_id:    TELEGRAM_USER,
@@ -36,6 +32,8 @@ def telegram_notification(message)
     text:       message
   )
 rescue Telegram::Bot::Exceptions::Base => e
-  retry unless (retries -= 1).zero?
+  retries ||= 3
+  retry if (retries -= 1).positive?
+
   raise e
 end
