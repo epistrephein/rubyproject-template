@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'rake',    '>= 12.0'
-gem 'sequel',  '~> 5.26'
+gem 'sequel',  '~> 5.30'
 
 gem 'mysql2',  '~> 0.5'
 # gem 'pg',      '~> 1.2'
