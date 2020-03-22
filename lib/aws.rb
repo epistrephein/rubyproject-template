@@ -16,7 +16,7 @@ AWS_CREDENTIALS = Aws::Credentials.new(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
 S3_CLIENT       = Aws::S3::Client.new(region: AWS_REGION, credentials: AWS_CREDENTIALS)
 
 # Upload a file to a S3 bucket
-def s3_put(file)
+def s3_put(file, swallow_exceptions: false)
   basename = File.basename(file)
   content  = File.read(file)
   digest   = Digest::MD5.digest(content)
@@ -31,5 +31,5 @@ rescue Aws::S3::Errors => e
   retries ||= 3
   retry if (retries -= 1).positive?
 
-  raise e
+  raise e unless swallow_exceptions
 end

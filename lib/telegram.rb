@@ -20,11 +20,11 @@ def telegram_exception(exception, app: TELEGRAM_APP)
     `#{exception.message}`
   TXT
 
-  telegram_notification(text)
+  telegram_notification(text, swallow_exceptions: true)
 end
 
 # Send a message via Telegram
-def telegram_notification(message)
+def telegram_notification(message, swallow_exceptions: false)
   bot = Telegram::Bot::Client.new(TELEGRAM_TOKEN)
   bot.api.send_message(
     chat_id:    TELEGRAM_USER,
@@ -35,5 +35,5 @@ rescue Telegram::Bot::Exceptions::Base => e
   retries ||= 3
   retry if (retries -= 1).positive?
 
-  raise e
+  raise e unless swallow_exceptions
 end
