@@ -5,7 +5,7 @@ A template for plain Ruby projects with database, backups, cronjobs, email and t
 ## Usage
 
 Customize the required gems in `Gemfile` then run `bin/setup` to install all
-dependencies via Bundler and duplicate the example configuration and schedule files.
+dependencies via Bundler and duplicate the example configuration and schedule files.  
 In production, pass `--without development` as argument to `bin/setup` in order
 to skip development dependencies.
 
@@ -13,10 +13,6 @@ Run `rake template:rename PROJECT=newname` to rename the project and replace all
 occurrences across the repo files.
 
 Customize `config/config.yml` with your credentials and variables.
-
-To disable the Telegram notification functionality or the support for remote database
-backup on AWS S3, pass `--without telegram` and/or `--without aws` as argument
-to `bin/setup`.
 
 Use the installed `whenever` gem to schedule recurring jobs via cron.  
 Customize the logic and the time interval in `config/schedule.rb`, then run
