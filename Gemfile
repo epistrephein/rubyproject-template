@@ -10,7 +10,8 @@ gem 'mysql2',  '~> 0.5'
 # gem 'sqlite3', '~> 1.4'
 
 group :aws do
-  gem 'aws-sdk-s3', '~> 1.60'
+  gem 'aws-sdk-s3',  '~> 1.60'
+  gem 'aws-sdk-ses', '~> 1.28'
 end
 
 group :telegram do

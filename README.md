@@ -1,6 +1,6 @@
 # Ruby Project
 
-A template for plain Ruby projects with database, backups, cronjobs and telegram support.
+A template for plain Ruby projects with database, backups, cronjobs, email and telegram support.
 
 ## Usage
 
@@ -54,8 +54,17 @@ file and can be used to override them.
 - `TELEGRAM_USER`: Recipient user ID
 
 #### AWS
-- `AWS_ACCESS_KEY_ID`: Access key
-- `AWS_SECRET_ACCESS_KEY`: Secret access key
-- `AWS_REGION`: Region
-- `AWS_BUCKET`: Bucket name
-- `AWS_PREFIX`: Bucket prefix (with final slash)
+###### S3
+- `S3_ACCESS_KEY_ID`: Access key
+- `S3_SECRET_ACCESS_KEY`: Secret access key
+- `S3_REGION`: Region
+- `S3_BUCKET`: Bucket name
+- `S3_PREFIX`: Bucket prefix (with final slash)
+
+###### SES
+- `SES_ACCESS_KEY_ID`: Access key
+- `SES_SECRET_ACCESS_KEY`: Secret access key
+- `SES_REGION`: Region
+- `SES_FROM_NAME`: Name of the sender
+- `SES_FROM_EMAIL`: Email of the sender
+- `SES_ENCODING`: Character encoding (default UTF-8)

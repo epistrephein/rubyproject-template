@@ -3,7 +3,7 @@
 require 'fileutils'
 
 require ROOT_DIR.join('lib', 'config')
-require ROOT_DIR.join('lib', 'aws')
+require ROOT_DIR.join('lib', 'aws_s3')
 
 namespace :db do
   DB_DIR   = ROOT_DIR.join('db')
