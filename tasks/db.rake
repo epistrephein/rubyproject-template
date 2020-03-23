@@ -2,29 +2,12 @@
 
 require 'fileutils'
 
-require ROOT_DIR.join('lib', 'config')
+require ROOT_DIR.join('lib', 'database')
 require ROOT_DIR.join('lib', 'aws_s3')
 
 namespace :db do
   DB_DIR   = ROOT_DIR.join('db')
   DUMP_DIR = DB_DIR.join('dump')
-
-  # MySQL
-  DB_HOST     = ENV['DB_HOST']     || @config.dig('mysql', 'host')
-  DB_PORT     = ENV['DB_PORT']     || @config.dig('mysql', 'port')
-  DB_USERNAME = ENV['DB_USERNAME'] || @config.dig('mysql', 'username')
-  DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('mysql', 'password')
-  DB_NAME     = ENV['DB_NAME']     || @config.dig('mysql', 'database')
-
-  # PostgreSQL
-  # DB_HOST     = ENV['DB_HOST']     || @config.dig('postgres', 'host')
-  # DB_PORT     = ENV['DB_PORT']     || @config.dig('postgres', 'port')
-  # DB_USERNAME = ENV['DB_USERNAME'] || @config.dig('postgres', 'username')
-  # DB_PASSWORD = ENV['DB_PASSWORD'] || @config.dig('postgres', 'password')
-  # DB_NAME     = ENV['DB_NAME']     || @config.dig('postgres', 'database')
-
-  # SQLite
-  # DB_FILE = ENV['DB_FILE'] || DB_DIR.join('rubyproject.sqlite')
 
   desc 'Dump database'
   task :dump do
