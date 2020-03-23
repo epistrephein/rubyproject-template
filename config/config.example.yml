@@ -5,6 +5,7 @@ mysql:
   password: password
   database: rubyproject
 telegram:
+  app_name: rubyproject
   token: 000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   user: 000000000
 aws:
