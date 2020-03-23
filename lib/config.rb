@@ -8,8 +8,9 @@ CONFIG_FILE = File.join(__dir__, '..', 'config', 'config.yml')
 @config = YAML.load_file(ENV['CONFIG_FILE'] || CONFIG_FILE)
 
 # Validate the configuration keys
-required_keys = %w[mysql telegram aws]
+required_keys = %w[mysql telegram aws:s3 aws:ses]
+missing_keys  = required_keys.reject { |k| @config.dig(*k.split(':')) }
 
-unless (missing = required_keys - @config.keys) && missing.empty?
-  raise "Invalid config file, missing keys: #{missing.join(', ')}"
+unless missing_keys.empty?
+  raise "Invalid config file, missing keys: #{missing_keys.join(', ')}"
 end
