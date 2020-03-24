@@ -63,4 +63,5 @@ file and can be used to override them.
 - `SES_REGION`: Region
 - `SES_FROM_NAME`: Name of the sender
 - `SES_FROM_EMAIL`: Email of the sender
+- `SES_TO_EMAIL`: Email of the recipient(s)
 - `SES_ENCODING`: Character encoding (default UTF-8)

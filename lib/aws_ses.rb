@@ -9,13 +9,14 @@ SES_SECRET_ACCESS_KEY = ENV['SES_SECRET_ACCESS_KEY'] || @config.dig('aws', 'ses'
 SES_REGION            = ENV['SES_REGION']            || @config.dig('aws', 'ses', 'region')
 SES_FROM_NAME         = ENV['SES_FROM_NAME']         || @config.dig('aws', 'ses', 'from_name')
 SES_FROM_EMAIL        = ENV['SES_FROM_EMAIL']        || @config.dig('aws', 'ses', 'from_email')
+SES_TO_EMAIL          = ENV['SES_TO_EMAIL']          || @config.dig('aws', 'ses', 'to_email')
 SES_ENCODING          = ENV['SES_ENCODING']          || 'UTF-8'
 
 SES_CREDENTIALS = Aws::Credentials.new(SES_ACCESS_KEY_ID, SES_SECRET_ACCESS_KEY)
 SES_CLIENT      = Aws::SES::Client.new(region: SES_REGION, credentials: SES_CREDENTIALS)
 
 # Send an email to recipient(s)
-def ses_send(to, subject, html, text, swallow_exceptions: false)
+def ses_send(to: SES_TO_EMAIL, subject:, html:, text:, swallow_exceptions: false)
   destination = { to_addresses: Array(to) }
   message     = {
     subject: { charset: SES_ENCODING, data: subject },
