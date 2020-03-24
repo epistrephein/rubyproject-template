@@ -45,7 +45,7 @@ file and can be used to override them.
 - `DB_LOG`: Database transactions log file
 
 #### Telegram
-- `TELEGRAM_APP_NAME`: Application name used in exception messages
+- `TELEGRAM_APP_NAME`: Application name displayed in messages
 - `TELEGRAM_TOKEN`: Bot token
 - `TELEGRAM_USER`: Recipient user ID
 
