@@ -2,15 +2,14 @@
 
 require 'fileutils'
 
-require ROOT_DIR.join('lib', 'database')
-require ROOT_DIR.join('lib', 'aws_s3')
-
 namespace :db do
   DB_DIR   = ROOT_DIR.join('db')
   DUMP_DIR = DB_DIR.join('dump')
 
   desc 'Dump database'
   task :dump do
+    require ROOT_DIR.join('lib', 'database')
+
     timestamp = Time.now.strftime('%Y%m%dT%H%M%S')
     dump_file = DUMP_DIR.join("rubyproject-#{timestamp}.dump.gz")
 
@@ -30,6 +29,8 @@ namespace :db do
 
   desc 'Backup database to S3'
   task :backup do
+    require ROOT_DIR.join('lib', 'aws_s3')
+
     Rake::Task['db:dump'].invoke
 
     dump_file = FileList.new(DUMP_DIR.join('*.gz')).last
