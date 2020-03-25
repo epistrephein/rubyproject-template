@@ -21,3 +21,4 @@ aws:
     region: eu-west-1
     from_name: rubyproject
     from_email: rubyproject@example.com
+    to_email: myaddress@example.com
