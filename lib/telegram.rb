@@ -31,7 +31,7 @@ def telegram_notification(message, swallow_exceptions: false)
     parse_mode: :markdown,
     text:       message
   )
-rescue Telegram::Bot::Exceptions::Base => e
+rescue Telegram::Bot::Exceptions::Base, Faraday::Error => e
   retries ||= 3
   retry if (retries -= 1).positive?
 

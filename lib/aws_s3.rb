@@ -27,7 +27,7 @@ def s3_put(file, swallow_exceptions: false)
     body:        content,
     content_md5: Base64.encode64(digest)
   )
-rescue Aws::S3::Errors => e
+rescue Aws::S3::Errors, Aws::Errors::NoSuchEndpointError => e
   retries ||= 3
   retry if (retries -= 1).positive?
 

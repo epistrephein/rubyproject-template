@@ -29,7 +29,7 @@ def ses_send(to: SES_TO_EMAIL, subject:, html:, text:, swallow_exceptions: false
     message:     message,
     source:      "#{SES_FROM_NAME} <#{SES_FROM_EMAIL}>"
   })
-rescue Aws::SES::Errors => e
+rescue Aws::SES::Errors, Aws::Errors::NoSuchEndpointError => e
   retries ||= 3
   retry if (retries -= 1).positive?
 
