@@ -3,7 +3,6 @@
 require 'sequel'
 
 require_relative 'config'
-require_relative 'loggers'
 
 # Set database timezones
 Sequel.database_timezone    = :utc
@@ -32,10 +31,9 @@ DB = Sequel.connect(
   port:     DB_PORT,
   username: DB_USERNAME,
   password: DB_PASSWORD,
-  database: DB_NAME,
-  logger:   @db_log
+  database: DB_NAME
 )
 
 # SQLite
 # DB_FILE = ENV['DB_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
-# DB      = Sequel.sqlite(DB_FILE, logger: @db_log)
+# DB      = Sequel.sqlite(DB_FILE)

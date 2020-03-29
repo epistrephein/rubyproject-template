@@ -42,7 +42,6 @@ file and can be used to override them.
 #### Logs
 - `STDOUT_LOG`: Standard output log file
 - `STDERR_LOG`: Standard error log file
-- `DB_LOG`: Database transactions log file
 
 #### Telegram
 - `TELEGRAM_APP_NAME`: Application name displayed in messages
