@@ -7,7 +7,7 @@ namespace :db do
   DUMP_DIR = DB_DIR.join('dump')
 
   desc 'Dump database'
-  task :dump do
+  task :dump do |task|
     require ROOT_DIR.join('lib', 'database')
 
     timestamp = Time.now.strftime('%Y%m%dT%H%M%S')
@@ -24,11 +24,11 @@ namespace :db do
     # SQLite
     # system "sqlite3 #{DB_FILE} .dump | gzip -c > #{dump_file}"
 
-    puts "Dumping to: #{dump_file}"
+    @stdout.info(task) { "Dumping to: #{dump_file}" }
   end
 
   desc 'Backup database to S3'
-  task :backup do
+  task :backup do |task|
     require ROOT_DIR.join('lib', 'aws_s3')
 
     Rake::Task['db:dump'].invoke
@@ -36,6 +36,6 @@ namespace :db do
     dump_file = FileList.new(DUMP_DIR.join('*.gz')).last
     s3_put(dump_file)
 
-    puts "Uploading to S3: #{dump_file}"
+    @stdout.info(task) { "Uploading to S3: #{dump_file}" }
   end
 end

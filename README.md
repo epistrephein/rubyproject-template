@@ -40,6 +40,7 @@ file and can be used to override them.
 - `DB_FILE`: Database file path
 
 #### Logs
+- `LOG_TO_FILE`: Log to file or to stdout/stderr
 - `STDOUT_LOG`: Standard output log file
 - `STDERR_LOG`: Standard error log file
 

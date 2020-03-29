@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-job_type :ruby, 'cd :path && :bundle_command ruby :task :output'
-job_type :rake, 'cd :path && :bundle_command rake :task :output'
+set :environment_variable, 'LOG_TO_FILE'
+set :environment,          'true'
 
-set :bundle_command, '/usr/local/bin/bundle exec'
-set :chronic_options, hours24: true
-set :output,          standard: 'log/stdout.log',
-                      error:    'log/stderr.log'
+set :bundle_command,       '/usr/local/bin/bundle exec'
+set :chronic_options,      hours24: true
+set :output,               standard: 'log/stdout.log',
+                           error:    'log/stderr.log'
 
 every 1.day, at: '10:30' do
-  ruby 'rubyproject.rb'
+  rake 'main:task'
 end
 
 every 1.week, at: '02:30' do
