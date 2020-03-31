@@ -4,8 +4,9 @@ require 'bundler/setup'
 require 'pathname'
 
 ROOT_DIR = Pathname(__dir__).expand_path
+$LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
 
-require ROOT_DIR.join('lib', 'config')
-require ROOT_DIR.join('lib', 'loggers')
+require 'lib/config'
+require 'lib/loggers'
 
 Rake.add_rakelib 'tasks/**'
