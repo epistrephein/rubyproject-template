@@ -27,5 +27,5 @@ group :development do
   gem 'dotenv'
   gem 'pry-byebug'
   gem 'rainbow'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.81.0'
 end
