@@ -4,11 +4,10 @@
 namespace :template do
   desc 'Rename the project (PROJECT=newname)'
   task :rename do
-    raise 'No project name specified, append PROJECT=newname' if ENV['PROJECT'].nil?
+    raise 'No project name specified' if ENV['PROJECT'].nil?
 
     project = ENV['PROJECT'].strip.downcase
 
-    ROOT_DIR.join('rubyproject.rb').rename("#{project}.rb")
     [
       ROOT_DIR.join('config', 'schedule.example.rb'),
       ROOT_DIR.join('config', 'schedule.rb'),

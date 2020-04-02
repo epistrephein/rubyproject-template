@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'fileutils'
-
 namespace :db do
   DB_DIR   = ROOT_DIR.join('db')
   DUMP_DIR = DB_DIR.join('dump')

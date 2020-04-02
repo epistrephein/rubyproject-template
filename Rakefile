@@ -10,3 +10,5 @@ require 'lib/config'
 require 'lib/loggers'
 
 Rake.add_rakelib 'tasks/**'
+
+task default: [:main]
