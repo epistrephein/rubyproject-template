@@ -20,8 +20,8 @@ Customize the logic and the time interval in `config/schedule.rb`, then run
 
 A development console is available via `bin/console`.
 
-To extend this template, simply add your custom code and logic in `.rake` files
-under the `tasks/` directory.
+To extend this template, simply add your custom code and logic in `lib/` and in 
+`.rake` files under the `tasks/` directory.
 
 ## Environmental variables
 
