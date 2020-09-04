@@ -2,15 +2,15 @@
 
 source 'https://rubygems.org'
 
-gem 'rake',    '>= 12.0'
-gem 'sequel',  '~> 5.30'
+gem 'rake', '>= 12.0'
+gem 'sequel', '~> 5.30'
 
-gem 'mysql2',  '~> 0.5'
-# gem 'pg',      '~> 1.2'
+gem 'mysql2', '~> 0.5'
+# gem 'pg', '~> 1.2'
 # gem 'sqlite3', '~> 1.4'
 
 group :aws do
-  gem 'aws-sdk-s3',  '~> 1.60'
+  gem 'aws-sdk-s3', '~> 1.60'
   gem 'aws-sdk-ses', '~> 1.28'
 end
 
