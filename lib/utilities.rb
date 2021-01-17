@@ -5,10 +5,9 @@ def with_retries(retries: 3, rescue_ex: [StandardError], swallow_ex: false, dela
   yield
 rescue *rescue_ex => e
   attempts ||= 1
-  delay_for  = attempts * delay
 
   if attempts <= retries
-    sleep delay_for
+    sleep (attempts * delay)
     attempts += 1
     retry
   end
