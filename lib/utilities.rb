@@ -7,7 +7,8 @@ rescue *rescue_ex => e
   attempts ||= 1
 
   if attempts <= retries
-    sleep (delay * attempts)
+    sleep delay * attempts
+
     attempts += 1
     retry
   end
