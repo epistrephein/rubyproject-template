@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -uo pipefail
 IFS=$'\n\t'
 set -vx
 
@@ -10,5 +10,6 @@ bundle install "$@"
 # Duplicate example config, schedule and env files
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 
-cp -nv "$ROOT_DIR/config/config.example.yml"  "$ROOT_DIR/config/config.yml"
-cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
+cp -n "$ROOT_DIR/config/config.example.yml"  "$ROOT_DIR/config/config.yml"
+cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
+cp -n "$ROOT_DIR/.env-example"               "$ROOT_DIR/.env"
