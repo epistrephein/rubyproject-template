@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Delete this rake file after successfully renaming the project
+# Delete this rake file after successfully renaming the project.
 namespace :template do
   desc 'Rename the project (PROJECT=newname)'
   task :rename do

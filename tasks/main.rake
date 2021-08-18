@@ -2,7 +2,8 @@
 
 desc 'Main task'
 task :main do |_task|
-  require 'lib/database'
-
-  puts 'This is a customizable rake task. Add your own logic here.'
+  Logger.stdout.info('This is a customizable rake task. Add your own logic here.')
+rescue StandardError => e
+  Telegram.exception(e)
+  Logger.stderr.error(e.class) { e.message }
 end

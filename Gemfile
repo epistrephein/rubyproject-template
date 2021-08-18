@@ -3,19 +3,23 @@
 source 'https://rubygems.org'
 
 gem 'rake', '>= 12.0'
-gem 'sequel', '~> 5.30'
+gem 'zeitwerk', '~> 2.4'
 
-gem 'mysql2', '~> 0.5'
-# gem 'pg', '~> 1.2'
-# gem 'sqlite3', '~> 1.4'
+group :database do
+  gem 'sequel', '~> 5.40'
 
-group :aws do
-  gem 'aws-sdk-s3', '~> 1.60'
-  gem 'aws-sdk-ses', '~> 1.28'
+  gem 'mysql2', '~> 0.5'
+  # gem 'pg', '~> 1.2'
+  # gem 'sqlite3', '~> 1.4'
 end
 
 group :telegram do
-  gem 'telegram-bot-ruby', '~> 0.12'
+  gem 'telegram-bot-ruby', '~> 0.16'
+end
+
+group :aws do
+  gem 'aws-sdk-s3', '~> 1.90'
+  gem 'aws-sdk-ses', '~> 1.40'
 end
 
 group :production do
@@ -23,9 +27,7 @@ group :production do
 end
 
 group :development do
-  gem 'awesome_print'
   gem 'dotenv'
-  gem 'pry-byebug'
-  gem 'rainbow'
+  gem 'pry'
   gem 'rubocop', '~> 0.81.0'
 end

@@ -33,17 +33,17 @@ file and can be used to override them.
 
 #### Database
 ###### MySQL/PostgreSQL
-- `DB_HOST`: Database hostname or IP
-- `DB_PORT`: Database port
-- `DB_USERNAME`: Database username
-- `DB_PASSWORD`: Database password
-- `DB_NAME`: Database name
+- `MYSQL_HOST`: Database hostname or IP
+- `MYSQL_PORT`: Database port
+- `MYSQL_USERNAME`: Database username
+- `MYSQL_PASSWORD`: Database password
+- `MYSQL_NAME`: Database name
 
 ###### SQLite
-- `DB_FILE`: Database file path
+- `SQLITE_FILE`: Database file path
 
 #### Logs
-- `LOG_TO_FILE`: Log to file or to stdout/stderr
+- `LOG_TO_FILE`: Log to file instead of stdout/stderr
 - `STDOUT_LOG`: Standard output log file
 - `STDERR_LOG`: Standard error log file
 
@@ -51,6 +51,7 @@ file and can be used to override them.
 - `TELEGRAM_APP_NAME`: Application name displayed in messages
 - `TELEGRAM_TOKEN`: Bot token
 - `TELEGRAM_USER`: Recipient user ID
+- `TELEGRAM_ENABLED`: Whether Telegram notifications are enabled
 
 #### AWS
 ###### S3

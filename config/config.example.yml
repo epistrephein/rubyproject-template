@@ -8,6 +8,7 @@ telegram:
   app_name: rubyproject
   token: 000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   user: 000000000
+  enabled: true
 aws:
   s3:
     access_key_id: AAAAAAAAAAAAAAAAAAAA
@@ -22,3 +23,4 @@ aws:
     from_name: rubyproject
     from_email: rubyproject@example.com
     to_email: myaddress@example.com
+    encoding: utf-8
