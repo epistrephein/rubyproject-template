@@ -14,5 +14,11 @@ loader.collapse("#{__dir__}/utilities")
 loader.do_not_eager_load(__FILE__)
 loader.do_not_eager_load("#{__dir__}/models")
 
+begin
+  require 'dotenv/load'
+rescue LoadError
+  nil
+end
+
 loader.setup
 loader.eager_load

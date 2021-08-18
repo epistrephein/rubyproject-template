@@ -12,7 +12,6 @@ require 'lib/loader'
 # Launch Pry or IRB.
 begin
   require 'pry'
-  require 'dotenv/load'
 
   Pry.start
 rescue LoadError
