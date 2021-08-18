@@ -37,7 +37,7 @@ file and can be used to override them.
 - `MYSQL_PORT`: Database port
 - `MYSQL_USERNAME`: Database username
 - `MYSQL_PASSWORD`: Database password
-- `MYSQL_NAME`: Database name
+- `MYSQL_DATABASE`: Database name
 
 ###### SQLite
 - `SQLITE_FILE`: Database file path
