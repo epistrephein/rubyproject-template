@@ -30,8 +30,8 @@ namespace :db do
     # MySQL
     command = []
     command << 'mysqldump'
-    command << "-u #{Config[:mysql, :username]}"
-    command << "-p #{Config[:mysql, :password]}" unless Config[:mysql, :password].empty?
+    command << "-u#{Config[:mysql, :username]}"
+    command << "-p#{Config[:mysql, :password]}" unless Config[:mysql, :password].empty?
     command << Config[:mysql, :database]
     command << "| gzip -c > #{dump_file}"
 
