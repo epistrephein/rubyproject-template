@@ -1,7 +1,9 @@
 AllCops:
+  NewCops: disable
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 2.6
+  SuggestExtensions: false
 
 # Check the indentation of the first argument in a method call.
 Layout/FirstArgumentIndentation:
@@ -30,6 +32,10 @@ Layout/MultilineMethodCallIndentation:
 
 # Check for ambiguous regexp literals in the first argument of a method invocation without parentheses.
 Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# Check for constants defined inside a block.
+Lint/ConstantDefinitionInBlock:
   Enabled: false
 
 # Check for statements which are raising Exception class.

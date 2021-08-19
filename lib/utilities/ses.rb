@@ -20,7 +20,7 @@ module Ses
 
   class << self
     # Send an email to recipient(s).
-    def send(to: TO_EMAIL, subject:, html:, text:, swallow_ex: false)
+    def send(subject:, html:, text:, to: TO_EMAIL, swallow_ex: false)
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
         destination = { to_addresses: Array(to) }
         message     = {

@@ -29,5 +29,5 @@ end
 group :development do
   gem 'dotenv'
   gem 'pry'
-  gem 'rubocop', '~> 0.81.0'
+  gem 'rubocop'
 end
