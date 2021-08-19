@@ -38,14 +38,6 @@ Lint/AmbiguousRegexpLiteral:
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
-# Check for statements which are raising Exception class.
-Lint/RaiseException:
-  Enabled: true
-
-# Check unexpected overrides of the Struct built-in methods via Struct.new.
-Lint/StructNewOverride:
-  Enabled: true
-
 # A calculated magnitude based on number of assignments, branches, and conditions.
 Metrics/AbcSize:
   Enabled: false
@@ -97,10 +89,6 @@ Style/Documentation:
 # Put empty method definitions on a single line.
 Style/EmptyMethod:
   Enabled: false
-
-# Enforce each_key and each_value Hash methods.
-Style/HashEachMethods:
-  Enabled: true
 
 # Enforce the use of transform_keys Hash method.
 Style/HashTransformKeys:
