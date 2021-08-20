@@ -4,10 +4,11 @@ A template for plain Ruby projects with database, backups, cronjobs, email and t
 
 ## Usage
 
-Customize the required gems in `Gemfile` then run `bin/setup` to install all
-dependencies via Bundler and duplicate the example configuration and schedule files.  
-In production, pass `--without development` as argument to `bin/setup` in order
-to skip development dependencies.
+After cloning this template, customize the required gems in `Gemfile` then run
+`bin/setup` to install all dependencies via Bundler and duplicate the example
+configuration, env and schedule files.  
+In production you might want to pass `--without development` as argument to
+`bin/setup` in order to skip development dependencies.
 
 Run `rake template:rename PROJECT=newname` to rename the project and replace all
 occurrences across the repo files.
@@ -18,7 +19,10 @@ Use the installed `whenever` gem to schedule recurring jobs via cron.
 Customize the logic and the time interval in `config/schedule.rb`, then run
 `whenever --update-crontab`.
 
-A development console is available via `bin/console`.
+The development console is available via `bin/console`.
+
+The database supports migrations out-of-the-box: add progressive migration files
+in the `db/migrate` folder and run `rake db:migrate` to migrate.
 
 To extend this template, simply add your custom code and logic in `lib/` and in 
 `.rake` files under the `tasks/` directory.
@@ -33,11 +37,11 @@ file and can be used to override them.
 
 #### Database
 ###### MySQL/PostgreSQL
-- `MYSQL_HOST`: Database hostname or IP
-- `MYSQL_PORT`: Database port
-- `MYSQL_USERNAME`: Database username
-- `MYSQL_PASSWORD`: Database password
-- `MYSQL_DATABASE`: Database name
+- `MYSQL_HOST` or `POSTGRES_HOST`: Database hostname or IP
+- `MYSQL_PORT` or `POSTGRES_PORT`: Database port
+- `MYSQL_USERNAME` or `POSTGRES_USERNAME`: Database username
+- `MYSQL_PASSWORD` or `POSTGRES_PASSWORD`: Database password
+- `MYSQL_DATABASE` or `POSTGRES_DATABASE`: Database name
 
 ###### SQLite
 - `SQLITE_FILE`: Database file path
