@@ -6,8 +6,10 @@ require 'pathname'
 ROOT_DIR = Pathname(__dir__).expand_path
 $LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
 
-require 'lib/loader'
-Loader.load!
+task :environment do
+  require 'lib/loader'
+  Loader.load!
+end
 
 Rake.add_rakelib 'tasks/**'
 

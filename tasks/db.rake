@@ -6,7 +6,7 @@ namespace :db do
   MIGRATE_DIR = DB_DIR.join('migrations')
 
   desc 'Run migrations'
-  task :migrate, [:version] do |_task, args|
+  task :migrate, [:version] => :environment do |_task, args|
     require 'sequel/core'
 
     Sequel.extension :migration
@@ -16,12 +16,12 @@ namespace :db do
   end
 
   desc 'View database version'
-  task :version do |_task|
+  task version: :environment do |_task|
     puts Database::DB[:schema_info].first[:version]
   end
 
   desc 'Dump database'
-  task :dump do |task|
+  task dump: :environment do |task|
     timestamp = Time.now.strftime('%Y%m%dT%H%M%S')
     dump_file = DUMP_DIR.join("rubyproject-#{timestamp}.dump.gz")
 
@@ -52,9 +52,7 @@ namespace :db do
   end
 
   desc 'Backup database to S3'
-  task :backup do |task|
-    Rake::Task['db:dump'].invoke
-
+  task backup: [:dump] do |task|
     dump_file = FileList.new(DUMP_DIR.join('*.gz')).last
     S3.put(dump_file)
 
