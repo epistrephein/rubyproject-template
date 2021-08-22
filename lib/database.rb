@@ -38,10 +38,10 @@ class Database
   )
 
   class << self
-    def method_missing(method_name, arg = nil)
+    def method_missing(method_name, *args, **kwargs)
       return super unless respond_to_missing?(method_name)
 
-      DB.public_send(method_name)
+      DB.public_send(method_name, *args, **kwargs)
     end
 
     def respond_to_missing?(method_name, include_private = false)
