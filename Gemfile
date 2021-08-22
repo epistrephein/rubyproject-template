@@ -11,6 +11,8 @@ group :database do
   gem 'mysql2', '~> 0.5'
   # gem 'pg', '~> 1.2'
   # gem 'sqlite3', '~> 1.4'
+
+  # gem 'redis', '~> 4.0'
 end
 
 group :telegram do

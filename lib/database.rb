@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sequel'
+# require 'redis'
 
 class Database
   # Set database timezones.
@@ -27,6 +28,12 @@ class Database
   # SQLite
   # DB_FILE = ENV['SQLITE_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
   # DB      = Sequel.sqlite(DB_FILE)
+
+  # Redis
+  # HOST     = Config[:redis, :host]
+  # PORT     = Config[:redis, :port]
+  # DATABASE = Config[:redis, :database]
+  # DB       = Redis.new(host: HOST, port: PORT, db: DATABASE)
 
   DB = Sequel.connect(
     adapter:  ADAPTER,

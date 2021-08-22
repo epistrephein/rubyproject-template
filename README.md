@@ -46,6 +46,11 @@ file and can be used to override them.
 ###### SQLite
 - `SQLITE_FILE`: Database file path
 
+###### Redis
+- `REDIS_HOST`: Database hostname or IP
+- `REDIS_PORT`: Database port
+- `REDIS_DATABASE`: Database number
+
 #### Logs
 - `LOG_TO_FILE`: Log to file instead of stdout/stderr
 - `STDOUT_LOG`: Standard output log file
