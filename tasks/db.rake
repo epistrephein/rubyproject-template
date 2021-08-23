@@ -3,7 +3,7 @@
 namespace :db do
   DB_DIR      = ROOT_DIR.join('db')
   DUMP_DIR    = DB_DIR.join('dump')
-  MIGRATE_DIR = DB_DIR.join('migrate')
+  MIGRATE_DIR = DB_DIR.join('migrations')
 
   desc 'Run migrations'
   task :migrate, [:version] do |_task, args|

@@ -22,7 +22,7 @@ Customize the logic and the time interval in `config/schedule.rb`, then run
 The development console is available via `bin/console`.
 
 The database supports migrations out-of-the-box: add progressive migration files
-in the `db/migrate` folder and run `rake db:migrate` to migrate.
+in the `db/migrations` folder and run `rake db:migrate` to migrate.
 
 To extend this template, simply add your custom code and logic in `lib/` and in 
 `.rake` files under the `tasks/` directory.
