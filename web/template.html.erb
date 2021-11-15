@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title><%= _title %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hello World!</h1>
+
+      <ul>
+        <% _model.each do |record| %>
+          <li><%= record.name %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.slim.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

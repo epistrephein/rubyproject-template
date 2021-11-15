@@ -27,6 +27,24 @@ in the `db/migrations` folder and run `rake db:migrate` to migrate.
 To extend this template, simply add your custom code and logic in `lib/` and in 
 `.rake` files under the `tasks/` directory.
 
+#### HTML output
+
+An optional rake task is available to create an HTML page from an ERB template
+that can be populated with database or other dynamic values that can then be
+served by a web server and can function as visual output of the project.
+
+First, customize your ERB template in `web/template.html.erb`, along with the
+css and javascript in the public folder if you need to.  
+Then setup the variable bindings in the `web:build` rake task that lives in
+`tasks/web.rake`. These variables will then be expanded in the template and an
+`web/public/index.html` file will be created.  
+Don't forget to call this task in the schedule if you want the page to be updated
+automatically.
+
+Use `rake web:serve` to launch WEBrick locally and see your result.
+
+In production you'll want to serve the `web/public` folder as a whole.
+
 ## Environmental variables
 
 Environmental variables have precedence over values defined in the configuration

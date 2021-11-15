@@ -55,3 +55,4 @@ Procfile.*
 /config/config.yml
 /config/schedule.rb
 /db/dump
+/web/public/*.html
