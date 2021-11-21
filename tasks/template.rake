@@ -14,7 +14,8 @@ namespace :template do
       ROOT_DIR.join('config', 'config.example.yml'),
       ROOT_DIR.join('config', 'config.yml'),
       ROOT_DIR.join('lib', 'database.rb'),
-      ROOT_DIR.join('tasks', 'db.rake')
+      ROOT_DIR.join('tasks', 'db.rake'),
+      ROOT_DIR.join('web', 'variables.yml')
     ].each do |file|
       next unless file.exist?
 

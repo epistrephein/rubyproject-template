@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><%= _title %></title>
+    <title><%= title %></title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -15,10 +15,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello World!</h1>
+      <h1><%= header %></h1>
 
       <ul>
-        <% _model.each do |record| %>
+        <% model.each do |record| %>
           <li><%= record.name %></li>
         <% end %>
       </ul>

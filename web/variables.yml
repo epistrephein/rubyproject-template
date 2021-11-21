@@ -1,0 +1,4 @@
+---
+title: rubyproject
+header: Hello World!
+model: !ruby/class 'Example'
