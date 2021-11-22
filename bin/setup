@@ -4,12 +4,25 @@ set -uo pipefail
 IFS=$'\n\t'
 set -vx
 
-# Install gem dependencies
-bundle install "$@"
+# Set environment, defaults to development
+ENV=${1:-development}
 
-# Duplicate example config, schedule and env files
+# Configure bundler for production
+if [ "$ENV" == "production" ]; then
+  bundle config set --local deployment true
+  bundle config set --local without development test
+fi
+
+# Install gem dependencies
+bundle install
+
+# Duplicate example config and schedule files
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 
 cp -n "$ROOT_DIR/config/config.example.yml"  "$ROOT_DIR/config/config.yml"
 cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
-cp -n "$ROOT_DIR/.env-example"               "$ROOT_DIR/.env"
+
+# Duplicate .env only on development
+if [ "$ENV" != "production" ]; then
+  cp -n "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
+fi
