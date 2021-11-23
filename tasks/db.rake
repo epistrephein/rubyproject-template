@@ -48,14 +48,16 @@ namespace :db do
     # SQLite
     # system "sqlite3 #{Database::DB_FILE} .dump | gzip -c > #{dump_file}"
 
-    Logger.stdout.info(task) { "Dumping to #{dump_file}" }
+    Logger.stdout.info(task) { "Dumping to: #{dump_file}" }
   end
 
   desc 'Backup database to S3'
   task backup: [:dump] do |task|
-    dump_file = FileList.new(DUMP_DIR.join('*.gz')).last
-    S3.put(dump_file)
+    dump_file   = FileList.new(DUMP_DIR.join('*.gz')).last
+    destination = File.join('databases', File.basename(dump_file))
 
-    Logger.stdout.info(task) { "Uploading to S3 #{dump_file}" }
+    S3.put(dump_file, to: destination)
+
+    Logger.stdout.info(task) { "Uploading to S3: #{destination}" }
   end
 end

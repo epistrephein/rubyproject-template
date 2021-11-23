@@ -24,29 +24,50 @@ module S3
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
         basename    = File.basename(file)
         destination = to || basename
+        remote      = File.join(PREFIX, destination)
+
         content     = File.read(file)
         digest      = Digest::MD5.digest(content)
 
         CLIENT.put_object(
           bucket:      BUCKET,
-          key:         File.join(PREFIX, destination),
+          key:         remote,
           body:        content,
           content_md5: Base64.encode64(digest)
         )
+
+        remote
       end
     end
 
     # Read a file from a S3 bucket.
     def get(path, to: nil, swallow_ex: false)
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
+        remote = File.join(PREFIX, path)
+
         object = CLIENT.get_object(
           bucket: BUCKET,
-          key:    File.join(PREFIX, path)
+          key:    remote
         )
 
         return object if to.nil?
 
-        File.write(to, File.read(object.body.read))
+        File.write(to, object.body.read)
+        to
+      end
+    end
+
+    # Delete a file from a S3 bucket.
+    def delete(path, swallow_ex: false)
+      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
+        remote = File.join(PREFIX, path)
+
+        CLIENT.delete_object(
+          bucket: BUCKET,
+          key:    remote
+        )
+
+        remote
       end
     end
   end
