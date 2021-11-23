@@ -7,10 +7,12 @@ set -vx
 # Set environment, defaults to development
 ENV=${1:-development}
 
-# Configure bundler for production
+# Configure bundler based on environment
 if [ "$ENV" == "production" ]; then
   bundle config set --local deployment true
   bundle config set --local without development test
+else
+  bundle config set --local without production
 fi
 
 # Install gem dependencies
@@ -19,10 +21,10 @@ bundle install
 # Duplicate example config and schedule files
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 
-cp -n "$ROOT_DIR/config/config.example.yml"  "$ROOT_DIR/config/config.yml"
+cp -n "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
 cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
 
-# Duplicate .env only on development
+# Don't duplicate .env in production
 if [ "$ENV" != "production" ]; then
   cp -n "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
 fi

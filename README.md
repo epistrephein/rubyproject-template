@@ -82,17 +82,17 @@ file and can be used to override them.
 
 #### AWS
 ###### S3
-- `S3_ACCESS_KEY_ID`: Access key
-- `S3_SECRET_ACCESS_KEY`: Secret access key
-- `S3_REGION`: Region
-- `S3_BUCKET`: Bucket name
-- `S3_PREFIX`: Bucket prefix (with final slash)
+- `AWS_S3_ACCESS_KEY_ID`: Access key
+- `AWS_S3_SECRET_ACCESS_KEY`: Secret access key
+- `AWS_S3_REGION`: Region
+- `AWS_S3_BUCKET`: Bucket name
+- `AWS_S3_PREFIX`: Bucket prefix (with final slash)
 
 ###### SES
-- `SES_ACCESS_KEY_ID`: Access key
-- `SES_SECRET_ACCESS_KEY`: Secret access key
-- `SES_REGION`: Region
-- `SES_FROM_NAME`: Name of the sender
-- `SES_FROM_EMAIL`: Email of the sender
-- `SES_TO_EMAIL`: Email of the recipient(s)
-- `SES_ENCODING`: Character encoding (default UTF-8)
+- `AWS_SES_ACCESS_KEY_ID`: Access key
+- `AWS_SES_SECRET_ACCESS_KEY`: Secret access key
+- `AWS_SES_REGION`: Region
+- `AWS_SES_FROM_NAME`: Name of the sender
+- `AWS_SES_FROM_EMAIL`: Email of the sender
+- `AWS_SES_TO_EMAIL`: Email of the recipient(s)
+- `AWS_SES_ENCODING`: Character encoding (default UTF-8)
