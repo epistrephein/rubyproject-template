@@ -51,8 +51,10 @@ Procfile.*
 # RuboCop
 .rubocop-https?--*
 
-# Project specific
+# Template
 /config/config.yml
 /config/schedule.rb
 /db/dump
 /web/public/*.html
+
+# Project specific

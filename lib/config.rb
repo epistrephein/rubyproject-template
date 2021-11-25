@@ -13,7 +13,6 @@ class Config
 
       ENV[env_var] || configuration.dig(*strings)
     end
-    alias at []
 
     private
 
