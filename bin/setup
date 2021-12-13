@@ -2,10 +2,30 @@
 
 set -uo pipefail
 IFS=$'\n\t'
-set -vx
 
-# Set environment, defaults to development.
-ENV=${1:-development}
+# Setup getops flags
+ENV="development"
+BUNDLER_VERSION=$(BUNDLE_PRINT_ONLY_VERSION_NUMBER=true bundle -v)
+
+usage() {
+  echo "Usage: $0 <args>" >&2
+  echo "  -p            Run setup for production env"
+  echo "  -d            Run setup for development env (default)"
+  echo "  -b [version]  Specify bundler version to install and use"
+}
+
+while getopts "dpb:h" flag; do
+  case "${flag}" in
+    d) ENV="development" ;;
+    p) ENV="production" ;;
+    b) BUNDLER_VERSION="${OPTARG}" ;;
+    h) usage; exit 0 ;;
+    *) usage; exit 1 ;;
+  esac
+done
+
+echo "Running setup for $ENV env with bundler v$BUNDLER_VERSION"
+sleep 1
 
 # Configure bundler based on environment.
 if [ "$ENV" == "production" ]; then
@@ -16,14 +36,14 @@ else
 fi
 
 # Install gem dependencies.
-bundle install
+gem install bundler:$BUNDLER_VERSION
+bundle _${BUNDLER_VERSION}_ install
 
 # Duplicate example config file.
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
-
 cp -n "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
 
-# Don't duplicate .env in production, and duplicate schedule only in production.
+# Don't duplicate .env in production. Duplicate schedule only in production.
 if [ "$ENV" == "production" ]; then
   cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
 else
