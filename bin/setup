@@ -36,7 +36,9 @@ else
 fi
 
 # Install gem dependencies.
-gem install bundler:$BUNDLER_VERSION
+if [ "$ENV" == "development" ]; then
+  gem install bundler:$BUNDLER_VERSION
+fi
 bundle _${BUNDLER_VERSION}_ install
 
 # Duplicate example config file.
