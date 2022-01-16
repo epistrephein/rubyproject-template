@@ -16,7 +16,7 @@ group :database do
 end
 
 group :telegram do
-  gem 'telegram-bot-ruby', '~> 0.16'
+  gem 'telegram-bot-ruby', '~> 0.17'
 end
 
 group :aws do
