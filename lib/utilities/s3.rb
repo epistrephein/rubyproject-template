@@ -24,7 +24,7 @@ module S3
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
         basename    = File.basename(file)
         destination = to || basename
-        remote      = File.join(PREFIX, destination)
+        remote      = "#{PREFIX}#{destination}"
 
         content     = File.read(file)
         digest      = Digest::MD5.digest(content)
@@ -43,7 +43,7 @@ module S3
     # Read a file from a S3 bucket.
     def get(path, to: nil, swallow_ex: false)
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
-        remote = File.join(PREFIX, path)
+        remote = "#{PREFIX}#{path}"
 
         object = CLIENT.get_object(
           bucket: BUCKET,
@@ -60,7 +60,7 @@ module S3
     # Delete a file from a S3 bucket.
     def delete(path, swallow_ex: false)
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
-        remote = File.join(PREFIX, path)
+        remote = "#{PREFIX}#{path}"
 
         CLIENT.delete_object(
           bucket: BUCKET,
