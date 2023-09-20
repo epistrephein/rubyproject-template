@@ -6,8 +6,8 @@ gem 'rake', '>= 12.0'
 gem 'zeitwerk', '~> 2.4'
 
 # Databases
-gem 'sequel', '~> 5.40'
 gem 'mysql2', '~> 0.5'
+gem 'sequel', '~> 5.40'
 # gem 'pg', '~> 1.2'
 # gem 'sqlite3', '~> 1.4'
 # gem 'redis', '~> 4.0'
