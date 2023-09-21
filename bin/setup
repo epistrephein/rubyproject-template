@@ -27,25 +27,26 @@ done
 echo "Running setup for $ENV env with bundler v$BUNDLER_VERSION"
 sleep 1
 
-# Configure bundler based on environment.
+# Configure bundler based on environment
 if [ "$ENV" == "production" ]; then
   bundle config set --local deployment true
   bundle config set --local without development test
+  bundle config set --local clean true
 else
   bundle config set --local without production
 fi
 
-# Install gem dependencies.
+# Install gem dependencies
 if [ "$ENV" == "development" ]; then
   gem install bundler:$BUNDLER_VERSION
 fi
 bundle _${BUNDLER_VERSION}_ install
 
-# Duplicate example config file.
+# Duplicate example config file
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 cp -n "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
 
-# Don't duplicate .env in production. Duplicate schedule only in production.
+# Don't duplicate .env in production; duplicate schedule only in production
 if [ "$ENV" == "production" ]; then
   cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
 else
