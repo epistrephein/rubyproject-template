@@ -5,10 +5,10 @@ A template for plain Ruby projects with database, backups, cronjobs, email and t
 ## Usage
 
 After cloning this template, customize the required gems in `Gemfile` then run
-`bin/setup -d -b [bundler version]` to install all dependencies via Bundler and
-duplicate the example configuration, env and schedule files.  
-In production, invoke it with `bin/setup -p` in order to configure bundler
-locally for deployment and skip development dependencies.
+`bin/setup -d` to install all development dependencies and duplicate the example
+configuration and env files.  
+In production, invoke it with `bin/setup -p` in order to locally configure bundler
+for deployment and skip development dependencies.
 
 Run `rake template:rename PROJECT=newname` to rename the project and replace all
 occurrences across the repo files.

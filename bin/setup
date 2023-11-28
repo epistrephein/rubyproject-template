@@ -3,31 +3,28 @@
 set -uo pipefail
 IFS=$'\n\t'
 
-# Setup getops flags
+# Setup getops flags.
 ENV="development"
-BUNDLER_VERSION=$(BUNDLE_PRINT_ONLY_VERSION_NUMBER=true bundle -v)
 
 usage() {
   echo "Usage: $0 <args>" >&2
-  echo "  -p            Run setup for production env"
-  echo "  -d            Run setup for development env (default)"
-  echo "  -b [version]  Specify bundler version to install and use"
+  echo "  -d  Run setup for development env (default)"
+  echo "  -p  Run setup for production env"
 }
 
-while getopts "dpb:h" flag; do
+while getopts "dp:h" flag; do
   case "${flag}" in
     d) ENV="development" ;;
     p) ENV="production" ;;
-    b) BUNDLER_VERSION="${OPTARG}" ;;
     h) usage; exit 0 ;;
     *) usage; exit 1 ;;
   esac
 done
 
-echo "Running setup for $ENV env with bundler v$BUNDLER_VERSION"
+echo "Running setup for environment: $ENV"
 sleep 1
 
-# Configure bundler based on environment
+# Configure bundler based on environment.
 if [ "$ENV" == "production" ]; then
   bundle config set --local deployment true
   bundle config set --local without development test
@@ -36,19 +33,16 @@ else
   bundle config set --local without production
 fi
 
-# Install gem dependencies
-if [ "$ENV" == "development" ]; then
-  gem install bundler:$BUNDLER_VERSION
-fi
-bundle _${BUNDLER_VERSION}_ install
+# Install gem dependencies.
+bundle install
 
-# Duplicate example config file
+# Duplicate example config file.
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
-cp -n "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
+cp -nv "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
 
-# Don't duplicate .env in production; duplicate schedule only in production
+# Don't duplicate .env in production; duplicate schedule only in production.
 if [ "$ENV" == "production" ]; then
-  cp -n "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
+  cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
 else
-  cp -n "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
+  cp -nv "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
 fi
