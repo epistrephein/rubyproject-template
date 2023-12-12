@@ -3,29 +3,30 @@
 set -uo pipefail
 IFS=$'\n\t'
 
-# Setup getops flags.
-ENV="development"
-
 usage() {
   echo "Usage: $0 <args>" >&2
-  echo "  -d  Run setup for development env (default)"
+  echo "  -d  Run setup for development env"
   echo "  -p  Run setup for production env"
 }
 
-while getopts "dp:h" flag; do
+# Show usage if no option is selected.
+if [ $# -eq 0 ]; then usage; exit 0; fi
+
+# Setup getops flags.
+while getopts "dph" flag; do
   case "${flag}" in
-    d) ENV="development" ;;
-    p) ENV="production" ;;
+    d) SETUP_ENV="development" ;;
+    p) SETUP_ENV="production" ;;
     h) usage; exit 0 ;;
     *) usage; exit 1 ;;
   esac
 done
 
-echo "Running setup for environment: $ENV"
+echo "Running setup for environment: $SETUP_ENV"
 sleep 1
 
 # Configure bundler based on environment.
-if [ "$ENV" == "production" ]; then
+if [ "$SETUP_ENV" == "production" ]; then
   bundle config set --local deployment true
   bundle config set --local without development test
   bundle config set --local clean true
@@ -40,8 +41,8 @@ bundle install
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 cp -nv "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
 
-# Don't duplicate .env in production; duplicate schedule only in production.
-if [ "$ENV" == "production" ]; then
+# Duplicate .env only in development; duplicate schedule only in production.
+if [ "$SETUP_ENV" == "production" ]; then
   cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
 else
   cp -nv "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
