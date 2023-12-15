@@ -2,7 +2,6 @@
 
 job_type :rake, 'cd :path && :bundle_command rake :task :output'
 
-set :bundle_command,  '/usr/bin/bundle exec'
 set :chronic_options, hours24: true
 set :output,          standard: 'log/stdout.log',
                       error:    'log/stderr.log'
