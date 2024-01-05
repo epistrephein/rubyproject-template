@@ -27,4 +27,5 @@ group :development do
   gem 'dotenv'
   gem 'pry'
   gem 'rubocop'
+  gem 'webrick'
 end
