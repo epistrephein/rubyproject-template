@@ -70,6 +70,7 @@ file and can be used to override them.
 - `REDIS_DATABASE`: Database number
 
 #### Logs
+- `SUPPRESS_LOG`: Suppress stdout/stderr log output
 - `LOG_TO_FILE`: Log to file instead of stdout/stderr
 - `STDOUT_LOG`: Standard output log file
 - `STDERR_LOG`: Standard error log file

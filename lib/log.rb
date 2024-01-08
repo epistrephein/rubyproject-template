@@ -17,7 +17,10 @@ class Log
     private
 
     def loggers
-      if %w[1 true].include?(ENV['LOG_TO_FILE']&.downcase)
+      if %w[1 true].include?(ENV['SUPPRESS_LOG']&.downcase)
+        stdout_log = File::NULL
+        stderr_log = File::NULL
+      elsif %w[1 true].include?(ENV['LOG_TO_FILE']&.downcase)
         stdout_log = ENV['STDOUT_LOG'] || File.join(LOG_DIR, 'stdout.log')
         stderr_log = ENV['STDERR_LOG'] || File.join(LOG_DIR, 'stderr.log')
       else
