@@ -2,7 +2,7 @@
 
 require 'logger'
 
-class Logger
+class Log
   LOG_DIR = File.join(__dir__, '..', 'log')
 
   class << self

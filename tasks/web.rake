@@ -17,7 +17,7 @@ namespace :web do
 
     File.write(GENERATED_FILE, erb.result_with_hash(vars))
 
-    Logger.stdout.info(task) { "Building: #{GENERATED_FILE}" }
+    Log.stdout.info(task) { "Building: #{GENERATED_FILE}" }
   end
 
   desc 'Serve webpage'
