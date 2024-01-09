@@ -9,8 +9,6 @@ namespace :template do
     project = ENV['PROJECT'].strip.downcase
 
     [
-      ROOT_DIR.join('config', 'schedule.example.rb'),
-      ROOT_DIR.join('config', 'schedule.rb'),
       ROOT_DIR.join('config', 'config.example.yml'),
       ROOT_DIR.join('config', 'config.yml'),
       ROOT_DIR.join('lib', 'database.rb'),

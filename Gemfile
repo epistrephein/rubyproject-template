@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rake', '>= 12.0'
+gem 'rake', '>= 13.0'
 gem 'zeitwerk', '~> 2.4'
 
 # Databases
@@ -23,9 +23,13 @@ group :production do
   gem 'whenever', '~> 1.0', require: false
 end
 
+group :test do
+  gem 'rspec', '~> 3.10'
+  gem 'rubocop', '~> 1.50'
+end
+
 group :development do
   gem 'dotenv'
   gem 'pry'
-  gem 'rubocop'
   gem 'webrick'
 end
