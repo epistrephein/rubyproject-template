@@ -1,0 +1,58 @@
+# Example config for main CI
+# Move this file to .github/workflows/main.yml
+
+name: main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: username
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: rubyproject
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Clone configuration file
+        run: cp -nv "config/config.example.yml" "config/config.yml"
+      - name: Migrate database
+        run: |
+          bundle exec rake db:migrate
+          bundle exec rake db:version
+      - name: Run RSpec
+        run: bundle exec rake spec
+      - name: Run RuboCop
+        run: bundle exec rake rubocop
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Connect and update
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p${{ secrets.SSH_PORT }} \
+            "cd ${{ secrets.SSH_WORKING_DIR }} && \
+            git fetch --prune && \
+            git reset --hard @{upstream} && \
+            git clean -d --force && \
+            bundle install"

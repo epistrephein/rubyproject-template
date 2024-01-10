@@ -1,0 +1,14 @@
+# Example config for dependabot
+# Move this file to .github/dependabot.yml
+
+version: 2
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    versioning-strategy: increase-if-necessary
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
