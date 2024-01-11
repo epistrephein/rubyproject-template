@@ -18,6 +18,7 @@ gem 'telegram-bot-ruby', '~> 1.0'
 # AWS
 gem 'aws-sdk-s3', '~> 1.90'
 gem 'aws-sdk-ses', '~> 1.40'
+gem 'rexml', '~> 3.2'
 
 group :production do
   gem 'whenever', '~> 1.0', require: false
