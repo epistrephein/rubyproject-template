@@ -17,7 +17,7 @@ Customize `config/config.yml` with your credentials and variables.
 
 Use the installed `whenever` gem to schedule recurring jobs via cron.  
 Customize the logic and the time interval in `config/schedule.rb`, then run
-`whenever --update-crontab`.
+`bundle exec whenever --update-crontab`.
 
 The development console is available via `bin/console`.
 
@@ -72,8 +72,8 @@ file and can be used to override them.
 #### Logs
 - `SUPPRESS_LOG`: Suppress stdout/stderr log output
 - `LOG_TO_FILE`: Log to file instead of stdout/stderr
-- `STDOUT_LOG`: Standard output log file
-- `STDERR_LOG`: Standard error log file
+- `STDOUT_LOG`: Standard output log file path
+- `STDERR_LOG`: Standard error log file path
 
 #### Telegram
 - `TELEGRAM_APP_NAME`: Application name displayed in messages
