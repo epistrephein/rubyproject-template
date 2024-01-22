@@ -7,11 +7,11 @@ class Log
 
   class << self
     def stdout
-      @stdout ||= ::Logger.new(loggers.first, 10, 1024000)
+      @stdout ||= Logger.new(loggers.first, 10, 1024000)
     end
 
     def stderr
-      @stderr ||= ::Logger.new(loggers.last, 10, 1024000)
+      @stderr ||= Logger.new(loggers.last, 10, 1024000)
     end
 
     private
