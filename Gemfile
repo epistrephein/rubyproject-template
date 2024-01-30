@@ -13,7 +13,7 @@ gem 'sequel', '~> 5.40'
 # gem 'redis', '~> 4.0'
 
 # Telegram
-gem 'telegram-bot-ruby', '~> 1.0'
+gem 'telegram-bot-ruby', '~> 2.0'
 
 # AWS
 gem 'aws-sdk-s3', '~> 1.90'
