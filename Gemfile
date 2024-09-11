@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'irb', '~> 1.14'
 gem 'rake', '>= 13.0'
 gem 'zeitwerk', '~> 2.4'
 
@@ -31,6 +32,5 @@ end
 
 group :development do
   gem 'dotenv'
-  gem 'irb'
   gem 'webrick'
 end
