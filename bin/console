@@ -3,6 +3,7 @@
 
 require 'bundler/setup'
 require 'pathname'
+require 'irb'
 
 ROOT_DIR = Pathname(__dir__).dirname.expand_path
 $LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
@@ -10,13 +11,5 @@ $LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
 require 'lib/loader'
 Loader.load!
 
-# Launch Pry or IRB.
-begin
-  require 'pry'
-
-  Pry.start
-rescue LoadError
-  require 'irb'
-
-  IRB.start(__FILE__)
-end
+# Start IRB.
+IRB.start(__FILE__)

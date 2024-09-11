@@ -31,6 +31,6 @@ end
 
 group :development do
   gem 'dotenv'
-  gem 'pry'
+  gem 'irb'
   gem 'webrick'
 end
