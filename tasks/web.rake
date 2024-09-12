@@ -13,7 +13,7 @@ namespace :web do
     require 'erb'
 
     erb  = ERB.new(File.read(TEMPLATE_FILE))
-    vars = YAML.load_file(VARIABLES_FILE)
+    vars = YAML.unsafe_load_file(VARIABLES_FILE)
 
     File.write(GENERATED_FILE, erb.result_with_hash(vars))
 
