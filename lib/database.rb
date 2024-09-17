@@ -9,21 +9,21 @@ class Database
   Sequel.application_timezone = :local
 
   # Connect to the database.
-  # MySQL
-  ADAPTER  = :mysql2
-  HOST     = Config[:mysql, :host]
-  PORT     = Config[:mysql, :port]
-  USERNAME = Config[:mysql, :username]
-  PASSWORD = Config[:mysql, :password]
-  DATABASE = Config[:mysql, :database]
-
   # PostgreSQL
-  # ADAPTER  = :postgres
-  # HOST     = Config[:postgres, :host]
-  # PORT     = Config[:postgres, :port]
-  # USERNAME = Config[:postgres, :username]
-  # PASSWORD = Config[:postgres, :password]
-  # DATABASE = Config[:postgres, :database]
+  ADAPTER  = :postgres
+  HOST     = Config[:postgres, :host]
+  PORT     = Config[:postgres, :port]
+  USERNAME = Config[:postgres, :username]
+  PASSWORD = Config[:postgres, :password]
+  DATABASE = Config[:postgres, :database]
+
+  # MySQL
+  # ADAPTER  = :mysql2
+  # HOST     = Config[:mysql, :host]
+  # PORT     = Config[:mysql, :port]
+  # USERNAME = Config[:mysql, :username]
+  # PASSWORD = Config[:mysql, :password]
+  # DATABASE = Config[:mysql, :database]
 
   # SQLite
   # DB_FILE = ENV['SQLITE_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')

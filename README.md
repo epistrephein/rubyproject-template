@@ -54,12 +54,12 @@ file and can be used to override them.
 - `CONFIG_FILE`: Path to YAML configuration file
 
 #### Database
-###### MySQL/PostgreSQL
-- `MYSQL_HOST` or `POSTGRES_HOST`: Database hostname or IP
-- `MYSQL_PORT` or `POSTGRES_PORT`: Database port
-- `MYSQL_USERNAME` or `POSTGRES_USERNAME`: Database username
-- `MYSQL_PASSWORD` or `POSTGRES_PASSWORD`: Database password
-- `MYSQL_DATABASE` or `POSTGRES_DATABASE`: Database name
+###### PostgreSQL/MySQL
+- `POSTGRES_HOST` or `MYSQL_HOST`: Database hostname or IP
+- `POSTGRES_PORT` or `MYSQL_PORT`: Database port
+- `POSTGRES_USERNAME` or `MYSQL_USERNAME`: Database username
+- `POSTGRES_PASSWORD` or `MYSQL_PASSWORD`: Database password
+- `POSTGRES_DATABASE` or `MYSQL_DATABASE`: Database name
 
 ###### SQLite
 - `SQLITE_FILE`: Database file path

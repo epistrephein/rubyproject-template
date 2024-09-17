@@ -4,7 +4,7 @@ require 'yaml'
 
 class Config
   CONFIG_FILE   = ENV['CONFIG_FILE'] || File.join(__dir__, '..', 'config', 'config.yml')
-  REQUIRED_KEYS = %w[mysql telegram aws:s3 aws:ses].freeze
+  REQUIRED_KEYS = %w[postgres telegram aws:s3 aws:ses].freeze
 
   class << self
     def [](*args)

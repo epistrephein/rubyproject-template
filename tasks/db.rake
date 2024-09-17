@@ -27,20 +27,20 @@ namespace :db do
 
     Dir.mkdir(DUMP_DIR) unless Dir.exist?(DUMP_DIR)
 
-    # MySQL
+    # PostgreSQL
     command = []
-    command << 'mysqldump'
-    command << "-u#{Config[:mysql, :username]}"
-    command << "-p#{Config[:mysql, :password]}" unless Config[:mysql, :password].empty?
-    command << Config[:mysql, :database]
+    command << "PGPASSWORD=#{Config[:postgres, :password]}" unless Config[:postgres, :password].empty?
+    command << 'pg_dump'
+    command << "-U #{Config[:postgres, :username]}"
+    command << Config[:postgres, :database]
     command << "| gzip -c > #{dump_file}"
 
-    # PostgreSQL
+    # MySQL
     # command = []
-    # command << "PGPASSWORD=#{Config[:postgres, :password]}" unless Config[:postgres, :password].empty?
-    # command << 'pg_dump'
-    # command << "-U #{Config[:postgres, :username]}"
-    # command << Config[:postgres, :database]
+    # command << 'mysqldump'
+    # command << "-u#{Config[:mysql, :username]}"
+    # command << "-p#{Config[:mysql, :password]}" unless Config[:mysql, :password].empty?
+    # command << Config[:mysql, :database]
     # command << "| gzip -c > #{dump_file}"
 
     system command.join(' ')

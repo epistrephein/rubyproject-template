@@ -13,15 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:8.0
+        image: postgres:16
         env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_USER: username
-          MYSQL_PASSWORD: password
-          MYSQL_DATABASE: rubyproject
+          POSTGRES_USER: rubyproject
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: rubyproject
         ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
