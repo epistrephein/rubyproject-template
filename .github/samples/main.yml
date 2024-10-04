@@ -12,8 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: postgres:16
+      postgres:
+        image: postgres:17
         env:
           POSTGRES_USER: rubyproject
           POSTGRES_PASSWORD: password
