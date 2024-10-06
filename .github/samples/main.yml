@@ -15,7 +15,7 @@ jobs:
       postgres:
         image: postgres:17
         env:
-          POSTGRES_USER: rubyproject
+          POSTGRES_USER: username
           POSTGRES_PASSWORD: password
           POSTGRES_DB: rubyproject
         ports:
