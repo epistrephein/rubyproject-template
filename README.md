@@ -55,6 +55,7 @@ file and can be used to override them.
 
 #### Database
 ###### PostgreSQL/MySQL
+- `DATABASE_URL`: Database URL (overrides all other database variables)
 - `POSTGRES_HOST` or `MYSQL_HOST`: Database hostname or IP
 - `POSTGRES_PORT` or `MYSQL_PORT`: Database port
 - `POSTGRES_USERNAME` or `MYSQL_USERNAME`: Database username
