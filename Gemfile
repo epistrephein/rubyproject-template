@@ -10,7 +10,7 @@ gem 'zeitwerk', '~> 2.4'
 gem 'pg', '~> 1.5'
 gem 'sequel', '~> 5.40'
 # gem 'mysql2', '~> 0.5'
-# gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 2.1'
 # gem 'redis', '~> 4.0'
 
 # Telegram
