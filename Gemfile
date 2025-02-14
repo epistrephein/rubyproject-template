@@ -11,7 +11,7 @@ gem 'pg', '~> 1.5'
 gem 'sequel', '~> 5.40'
 # gem 'mysql2', '~> 0.5'
 # gem 'sqlite3', '~> 2.1'
-# gem 'redis', '~> 4.0'
+# gem 'redis', '~> 5.0'
 
 # Telegram
 gem 'telegram-bot-ruby', '~> 2.0'
