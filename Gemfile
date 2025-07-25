@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 
 gem 'irb', '~> 1.14'
+gem 'logger', '~> 1.7'
 gem 'rake', '>= 13.0'
 gem 'zeitwerk', '~> 2.4'
 
