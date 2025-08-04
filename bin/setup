@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+set -euo pipefail
 IFS=$'\n\t'
 
 usage() {
@@ -39,11 +39,11 @@ bundle install
 
 # Duplicate example config file.
 ROOT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
-cp -nv "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml"
+cp -nv "$ROOT_DIR/config/config.example.yml" "$ROOT_DIR/config/config.yml" || true
 
 # Duplicate .env only in development; duplicate schedule only in production.
 if [ "$SETUP_ENV" == "production" ]; then
-  cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb"
+  cp -nv "$ROOT_DIR/config/schedule.example.rb" "$ROOT_DIR/config/schedule.rb" || true
 else
-  cp -nv "$ROOT_DIR/.env-example" "$ROOT_DIR/.env"
+  cp -nv "$ROOT_DIR/.env-example" "$ROOT_DIR/.env" || true
 fi
