@@ -27,17 +27,17 @@ class Loader
     private
 
     def push!
-      paths = @opts[:push] || PUSH
+      paths = @opts.fetch(:push, PUSH)
       paths.each { |path| @loader.push_dir(path) }
     end
 
     def collapse!
-      paths = @opts[:collapse] || COLLAPSE
+      paths = @opts.fetch(:collapse, COLLAPSE)
       paths.each { |path| @loader.collapse("#{__dir__}/#{path}") }
     end
 
     def try_require!
-      gems = @opts[:try_require] || TRY_REQUIRE
+      gems = @opts.fetch(:try_require, TRY_REQUIRE)
       gems.each do |gem|
         require gem
       rescue LoadError
@@ -46,14 +46,12 @@ class Loader
     end
 
     def exclude_eager_load!
-      paths = @opts[:exclude_eager_load] || EXCLUDE_EAGER_LOAD
+      paths = @opts.fetch(:exclude_eager_load, EXCLUDE_EAGER_LOAD)
       paths.each { |path| @loader.do_not_eager_load("#{__dir__}/#{path}") }
     end
 
     def eager_load?
-      return EAGER_LOAD if @opts[:eager_load].nil?
-
-      @opts[:eager_load]
+      @opts.fetch(:eager_load, EAGER_LOAD)
     end
   end
 end
