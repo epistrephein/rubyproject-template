@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'zeitwerk'
+require "zeitwerk"
 
 class Loader
   PUSH               = [__dir__].freeze

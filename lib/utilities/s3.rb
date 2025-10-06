@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'aws-sdk-s3'
-require 'base64'
-require 'digest'
+require "aws-sdk-s3"
+require "base64"
+require "digest"
 
 module S3
   extend Retryable

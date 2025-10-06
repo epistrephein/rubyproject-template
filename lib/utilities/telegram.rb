@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'telegram/bot'
-require 'time'
+require "telegram/bot"
+require "time"
 
 module Telegram
   extend Retryable
@@ -41,11 +41,11 @@ module Telegram
 
     def header(title, type: :info, emoji: nil)
       emoji ||= case type.to_sym
-                when :info    then '💬'
-                when :error   then '🚧'
-                when :success then '🎉'
-                when :urgent  then '📣'
-                else               '💬'
+                when :info    then "💬"
+                when :error   then "🚧"
+                when :success then "🎉"
+                when :urgent  then "📣"
+                else               "💬"
                 end
 
       "#{emoji} *#{APP_NAME}*: #{title} #{emoji}"

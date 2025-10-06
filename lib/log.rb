@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'logger'
+require "logger"
 
 class Log
-  LOG_DIR = File.join(__dir__, '..', 'log')
+  LOG_DIR = File.join(__dir__, "..", "log")
 
   class << self
     def stdout
@@ -17,12 +17,12 @@ class Log
     private
 
     def loggers
-      if %w[1 true].include?(ENV['SUPPRESS_LOG']&.downcase)
+      if %w[1 true].include?(ENV["SUPPRESS_LOG"]&.downcase)
         stdout_log = File::NULL
         stderr_log = File::NULL
-      elsif %w[1 true].include?(ENV['LOG_TO_FILE']&.downcase)
-        stdout_log = ENV['STDOUT_LOG'] || File.join(LOG_DIR, 'stdout.log')
-        stderr_log = ENV['STDERR_LOG'] || File.join(LOG_DIR, 'stderr.log')
+      elsif %w[1 true].include?(ENV["LOG_TO_FILE"]&.downcase)
+        stdout_log = ENV["STDOUT_LOG"] || File.join(LOG_DIR, "stdout.log")
+        stderr_log = ENV["STDERR_LOG"] || File.join(LOG_DIR, "stderr.log")
       else
         stdout_log = $stdout
         stderr_log = $stderr

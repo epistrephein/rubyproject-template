@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sequel'
+require "sequel"
 # require 'redis'
 
 class Database
@@ -36,7 +36,7 @@ class Database
   # DB       = Redis.new(host: HOST, port: PORT, db: DATABASE)
 
   DB = Sequel.connect(
-    ENV['DATABASE_URL'] ||
+    ENV["DATABASE_URL"] ||
     { adapter:  ADAPTER,
       host:     HOST,
       port:     PORT,

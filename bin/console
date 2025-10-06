@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'pathname'
-require 'irb'
+require "bundler/setup"
+require "pathname"
+require "irb"
 
 ROOT_DIR = Pathname(__dir__).dirname.expand_path
 $LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
 
-require 'lib/loader'
+require "lib/loader"
 Loader.load!
 
 # Start IRB.
