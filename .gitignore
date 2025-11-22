@@ -39,7 +39,8 @@ Procfile.*
 .env*
 !.env-example
 
-# Pry/Byebug
+# IRB/Pry/Byebug
+.irbrc
 /.pry
 .pryrc
 .pry_history
