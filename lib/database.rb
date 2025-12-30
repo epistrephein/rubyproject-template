@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "sequel"
-# require 'redis'
+# require "redis"
 
 class Database
   # Set database timezones.
@@ -26,7 +26,7 @@ class Database
   # DATABASE = Config[:mysql, :database]
 
   # SQLite
-  # DB_FILE = ENV['SQLITE_FILE'] || File.join(__dir__, '..', 'db', 'rubyproject.sqlite')
+  # DB_FILE = ENV["SQLITE_FILE"] || File.join(__dir__, "..", "db", "rubyproject.sqlite")
   # DB      = Sequel.sqlite(DB_FILE)
 
   # Redis

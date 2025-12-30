@@ -37,7 +37,7 @@ namespace :db do
 
     # MySQL
     # command = []
-    # command << 'mysqldump'
+    # command << "mysqldump"
     # command << "-u#{Config[:mysql, :username]}"
     # command << "-p#{Config[:mysql, :password]}" unless Config[:mysql, :password].empty?
     # command << Config[:mysql, :database]

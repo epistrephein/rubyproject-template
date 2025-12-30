@@ -8,7 +8,7 @@ set :output,          standard: "log/stdout.log",
 
 every 1.day, at: "10:30" do
   rake "main"
-  # rake 'web:build'
+  # rake "web:build"
 end
 
 every 1.week, at: "02:30" do
