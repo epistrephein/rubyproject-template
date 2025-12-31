@@ -42,7 +42,7 @@ module Telegram
     def header(title, type: :info, emoji: nil)
       emoji ||= case type.to_sym
                 when :info    then "💬"
-                when :error   then "🚧"
+                when :error   then "💥"
                 when :success then "🎉"
                 when :urgent  then "📣"
                 else               "💬"
