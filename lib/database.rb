@@ -36,13 +36,14 @@ class Database
   # DB       = Redis.new(host: HOST, port: PORT, db: DATABASE)
 
   DB = Sequel.connect(
-    ENV["DATABASE_URL"] ||
-    { adapter:  ADAPTER,
+    ENV["DATABASE_URL"] || {
+      adapter:  ADAPTER,
       host:     HOST,
       port:     PORT,
       username: USERNAME,
       password: PASSWORD,
-      database: DATABASE }
+      database: DATABASE
+    }
   )
 
   class << self
