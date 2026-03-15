@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "pathname"
 require "irb"
 
 ROOT_DIR = Pathname(__dir__).dirname.expand_path
