@@ -1,14 +1,15 @@
 # Ruby Project
 
-A template for plain Ruby projects with database, backups, cronjobs, email and telegram support.
+A template for plain Ruby projects with database, backups, cronjobs, email and
+telegram support.
 
 ## Usage
 
 After cloning this template, customize the required gems in `Gemfile` then run
 `bin/setup -d` to install all development dependencies and duplicate the example
 configuration and env files.  
-In production, invoke it with `bin/setup -p` in order to locally configure bundler
-for deployment and skip development dependencies.
+In production, invoke it with `bin/setup -p` in order to locally configure
+bundler for deployment and skip development dependencies.
 
 Run `rake template:rename PROJECT=newname` to rename the project and replace all
 occurrences across the repo files.
@@ -38,8 +39,8 @@ css and javascript in the public folder if you need to. Then setup the variables
 binding in the `web/variables.yml` file. These variables will then be expanded
 in the template when running `rake web:build` and a `web/public/index.html` file
 will be created.  
-Don't forget to call the rake task in the schedule too if you want the page to be 
-updated automatically.
+Don't forget to call the rake task in the schedule too if you want the page to
+be updated automatically.
 
 Use `rake web:serve` to launch WEBrick locally and see your result.
 
