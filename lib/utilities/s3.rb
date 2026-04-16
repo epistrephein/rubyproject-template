@@ -21,7 +21,7 @@ module S3
   class << self
     # Upload a file to a S3 bucket.
     def put(file, to: nil, swallow_ex: false)
-      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
+      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, backoff: 3) do
         basename    = File.basename(file)
         destination = to || basename
         remote      = "#{PREFIX}#{destination}"
@@ -42,7 +42,7 @@ module S3
 
     # Read a file from a S3 bucket.
     def get(path, to: nil, swallow_ex: false)
-      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
+      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, backoff: 3) do
         remote = "#{PREFIX}#{path}"
 
         object = CLIENT.get_object(
@@ -59,7 +59,7 @@ module S3
 
     # Delete a file from a S3 bucket.
     def delete(path, swallow_ex: false)
-      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 5) do
+      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, backoff: 3) do
         remote = "#{PREFIX}#{path}"
 
         CLIENT.delete_object(

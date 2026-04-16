@@ -54,7 +54,7 @@ module Telegram
     def call(text, swallow_ex: false)
       return false unless ENABLED
 
-      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, delay: 1) do
+      with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, backoff: 2) do
         bot = Telegram::Bot::Client.new(TOKEN)
         bot.api.send_message(
           chat_id:    USER,
