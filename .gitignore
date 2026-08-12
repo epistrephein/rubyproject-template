@@ -34,6 +34,9 @@
 *.sqlite
 *.db
 
+# Redis
+*.rdb
+
 # Foreman/Dotenv
 Procfile.*
 .env*
