@@ -30,6 +30,7 @@ end
 group :test do
   gem "rspec", "~> 3.13"
   gem "rubocop", "~> 1.85"
+  gem "simplecov", "~> 1.1"
 end
 
 group :development do

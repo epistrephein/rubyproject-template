@@ -2,6 +2,9 @@
 
 require "bundler/setup"
 
+require "simplecov"
+SimpleCov.start
+
 ROOT_DIR = Pathname(__dir__).dirname.expand_path
 $LOAD_PATH.unshift(ROOT_DIR) unless $LOAD_PATH.include?(ROOT_DIR)
 
