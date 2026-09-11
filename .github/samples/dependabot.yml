@@ -5,9 +5,9 @@ version: 2
 updates:
   - package-ecosystem: "bundler"
     directory: "/"
-    schedule:
-      interval: "weekly"
     versioning-strategy: increase-if-necessary
+    schedule:
+      interval: "monthly"
     open-pull-requests-limit: 7
     cooldown:
       default-days: 7
@@ -15,12 +15,15 @@ updates:
       semver-minor-days: 7
       semver-patch-days: 3
     groups:
-      dev-dependencies:
+      bundler:
         patterns:
           - "*"
-        dependency-type: "development"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
