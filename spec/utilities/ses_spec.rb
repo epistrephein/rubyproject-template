@@ -55,6 +55,21 @@ RSpec.describe Ses do
       )
     end
 
+    it "supports a reply-to address" do
+      allow(client).to receive(:send_email)
+
+      described_class.send_email(
+        subject:  "Subject",
+        html:     "<b>Hi</b>",
+        text:     "Hi",
+        reply_to: "reply@example.com"
+      )
+
+      expect(client).to have_received(:send_email).with(
+        hash_including(reply_to_addresses: ["reply@example.com"])
+      )
+    end
+
     it "forwards swallow_ex to retry wrapper" do
       allow(client).to receive(:send_email)
 
