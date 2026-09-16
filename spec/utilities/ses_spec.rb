@@ -13,12 +13,12 @@ RSpec.describe Ses do
     allow(described_class).to receive(:with_retries).and_yield
   end
 
-  describe ".send" do
+  describe ".send_email" do
     it "sends an email payload with default recipient" do
       response = instance_double(Aws::SES::Types::SendEmailResponse)
       allow(client).to receive(:send_email).and_return(response)
 
-      result = described_class.send(subject: "Subject", html: "<b>Hi</b>", text: "Hi")
+      result = described_class.send_email(subject: "Subject", html: "<b>Hi</b>", text: "Hi")
 
       expect(described_class).to have_received(:with_retries).with(
         rescue_ex:  Ses::EXCEPTIONS,
@@ -43,7 +43,7 @@ RSpec.describe Ses do
     it "supports multiple recipients" do
       allow(client).to receive(:send_email)
 
-      described_class.send(
+      described_class.send_email(
         subject: "Subject",
         html:    "<b>Hi</b>",
         text:    "Hi",
@@ -58,7 +58,7 @@ RSpec.describe Ses do
     it "forwards swallow_ex to retry wrapper" do
       allow(client).to receive(:send_email)
 
-      described_class.send(subject: "Subject", html: "<b>Hi</b>", text: "Hi", swallow_ex: true)
+      described_class.send_email(subject: "Subject", html: "<b>Hi</b>", text: "Hi", swallow_ex: true)
 
       expect(described_class).to have_received(:with_retries).with(
         rescue_ex:  Ses::EXCEPTIONS,

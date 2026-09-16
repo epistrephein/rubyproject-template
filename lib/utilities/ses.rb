@@ -20,20 +20,23 @@ module Ses
 
   class << self
     # Send an email to recipient(s).
-    def send(subject:, html:, text:, to: TO_EMAIL, swallow_ex: false)
+    def send_email(subject:, html:, text:, to: TO_EMAIL, swallow_ex: false)
       with_retries(rescue_ex: EXCEPTIONS, swallow_ex: swallow_ex, backoff: 3) do
         destination = { to_addresses: Array(to) }
+
         message     = {
           subject: { charset: ENCODING, data: subject },
           body:    { html: { charset: ENCODING, data: html },
                      text: { charset: ENCODING, data: text } }
         }
 
-        CLIENT.send_email({
+        params = {
           destination: destination,
           message:     message,
           source:      "#{FROM_NAME} <#{FROM_EMAIL}>"
-        })
+        }
+
+        CLIENT.send_email(params.compact)
       end
     end
   end
